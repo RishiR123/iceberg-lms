@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import { ActivityActions } from "@/components/ActivityActions";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, FileText, Download, Lightbulb, PlayCircle, BookOpen, HelpCircle, MessageSquare, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, FileText, Download, Lightbulb, PlayCircle, BookOpen, HelpCircle, MessageSquare, ExternalLink, Clock } from "lucide-react";
 import { ActivityRenderer } from "@/components/activities/ActivityRenderer";
 import { parseResources } from "@/lib/activities";
 
@@ -81,8 +81,8 @@ export default async function ActivityPage({
             {activity.title}
           </h1>
           {activity.duration && (
-            <span className="inline-flex items-center text-xs font-semibold text-[#645A95]">
-              ⏱️ Estimated Duration: {activity.duration}
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#645A95]">
+              <Clock className="w-3.5 h-3.5" /> {activity.duration}
             </span>
           )}
         </div>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { LogOut, LayoutDashboard } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { usePathname, useRouter } from "next/navigation";
 import { logoutAction } from "@/app/actions/authActions";
 
@@ -42,16 +43,8 @@ export function Navbar({ user }: NavbarProps) {
     <nav className="sticky top-0 z-50 w-full border-b border-[#E2D5F8]/40 bg-white/80 backdrop-blur-md">
       <div className="container flex h-14 items-center px-6 max-w-7xl mx-auto justify-between gap-6">
         {/* Brand → the learner's home */}
-        <Link
-          href="/dashboard"
-          className="flex items-center space-x-2 transition-opacity hover:opacity-90 !no-underline hover:!no-underline"
-        >
-          <div className="bg-[#0B012C] text-[#E9D5FF] p-1.5 rounded-lg shadow-sm flex items-center justify-center font-bold text-xs">
-            🧊
-          </div>
-          <span className="font-extrabold text-base tracking-tight text-[#0B012C] !no-underline hover:!no-underline">
-            Iceberg
-          </span>
+        <Link href="/dashboard" className="text-[#0B012C] !no-underline hover:!no-underline">
+          <Logo markClassName="w-5 h-5" className="text-base" />
         </Link>
 
         <div className="flex items-center space-x-4 select-none">

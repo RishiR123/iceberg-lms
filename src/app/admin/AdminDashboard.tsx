@@ -881,7 +881,7 @@ export function AdminDashboard({
                   </div>
                 )}
 
-                {/* TAB 3: Ultra Premium Curriculum Builder columns */}
+                {/* TAB 3: Curriculum builder */}
                 {activeTab === "curriculum" && (
                   <div className="flex h-full overflow-hidden select-none p-5 gap-5">
                     

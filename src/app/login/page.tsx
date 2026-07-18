@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Mail, Lock, Loader2, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { loginAction } from "@/app/actions/authActions";
+import { Logo } from "@/components/Logo";
 
 function LoginForm() {
   const router = useRouter();
@@ -46,7 +47,7 @@ function LoginForm() {
             href="/"
             className="inline-flex items-center gap-1.5 self-start border border-[#0B012C]/15 rounded-full px-4 py-2 text-sm font-black tracking-tight text-[#0B012C] hover:border-[#0B012C]/40 transition-colors !no-underline hover:!no-underline"
           >
-            <span className="text-base leading-none">🧊</span> Iceberg
+<Logo markClassName="w-4 h-4" />
           </Link>
 
           <div className="flex-1 flex flex-col justify-center max-w-sm w-full mx-auto py-10">

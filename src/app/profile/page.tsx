@@ -35,8 +35,6 @@ export default async function ProfilePage() {
         {/* LEFT COLUMN: Premium Scholar Profile Card */}
         <div className="w-full lg:w-96 flex-shrink-0 space-y-6">
           <div className="bg-white rounded-3xl border border-[#E2D5F8]/50 p-6 md:p-8 shadow-md relative overflow-hidden text-left">
-            {/* Decorative background shape */}
-            <div className="absolute right-0 top-0 w-24 h-24 bg-[#E9D5FF]/30 rounded-full blur-2xl pointer-events-none" />
             
             {/* Main Avatar Illustration */}
             <div className="flex flex-col items-center text-center space-y-4 pb-6 border-b border-[#E2D5F8]/30">

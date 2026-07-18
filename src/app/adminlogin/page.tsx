@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Mail, Lock, Loader2, ArrowLeft, ShieldAlert, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import { loginAction } from "@/app/actions/authActions";
+import { Logo } from "@/components/Logo";
 
 function AdminLoginForm() {
   const router = useRouter();
@@ -49,13 +50,10 @@ function AdminLoginForm() {
         </Link>
       </div>
 
-      <div className="bg-white rounded-3xl border border-[#E2D5F8]/60 p-8 md:p-10 shadow-2xl relative overflow-hidden text-left">
-        <div className="absolute right-0 top-0 w-24 h-24 bg-[#0B012C]/5 rounded-full blur-2xl pointer-events-none" />
-
+      <div className="bg-white rounded-2xl border border-[#E2D5F8]/60 p-8 md:p-10 shadow-lg text-left">
         <div className="space-y-2 mb-6">
-          <div className="flex items-center gap-2 select-none">
-            <span className="text-2xl block">🧊</span>
-            <span className="text-[#0B012C] font-black text-xl tracking-tight">Iceberg</span>
+          <div className="text-[#0B012C]">
+            <Logo markClassName="w-5 h-5" className="text-xl" />
           </div>
           <div className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-white bg-[#0B012C] px-2.5 py-1 rounded-full">
             <ShieldAlert className="w-3 h-3" /> Admin Portal

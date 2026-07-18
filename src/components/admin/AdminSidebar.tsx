@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 import { BookOpen, Users, Eye, UserCircle, LogOut } from "lucide-react";
 
 export type AdminSection = "courses" | "people";
@@ -27,8 +28,7 @@ export function AdminSidebar({
     <aside className="w-60 flex-shrink-0 bg-[#0B012C] text-white flex flex-col h-full select-none">
       {/* Brand */}
       <div className="px-5 h-14 flex items-center gap-2 border-b border-white/10 flex-shrink-0">
-        <span className="text-lg">🧊</span>
-        <span className="font-black text-sm tracking-tight">Iceberg</span>
+        <Logo markClassName="w-4 h-4" className="text-sm" />
         <span className="ml-auto text-[8px] font-black uppercase tracking-wider bg-white/15 px-1.5 py-0.5 rounded">
           Admin
         </span>
