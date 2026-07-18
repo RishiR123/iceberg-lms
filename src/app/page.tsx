@@ -2,6 +2,10 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { ArrowUpRight, GraduationCap } from "lucide-react";
 
+// Rendered per request, never at build time — it reads live data from the
+// database, and the build must not depend on the database being reachable.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   // Fetch the active course from the database
   const course = await prisma.course.findFirst({
