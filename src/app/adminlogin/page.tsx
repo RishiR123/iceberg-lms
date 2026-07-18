@@ -50,16 +50,16 @@ function AdminLoginForm() {
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl border border-[#E2D5F8]/60 p-8 md:p-10 shadow-lg text-left">
+      <div className="bg-white rounded-2xl border border-[#E2E8F0]/60 p-8 md:p-10 shadow-lg text-left">
         <div className="space-y-2 mb-6">
-          <div className="text-[#0B012C]">
+          <div className="text-[#0F172A]">
             <Logo markClassName="w-5 h-5" className="text-xl" />
           </div>
-          <div className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-white bg-[#0B012C] px-2.5 py-1 rounded-full">
+          <div className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-white bg-[#0F172A] px-2.5 py-1 rounded-full">
             <ShieldAlert className="w-3 h-3" /> Admin Portal
           </div>
-          <h1 className="text-2xl font-black text-[#0B012C] tracking-tight pt-2">Administrator sign in</h1>
-          <p className="text-xs text-[#645A95] font-semibold">
+          <h1 className="text-2xl font-black text-[#0F172A] tracking-tight pt-2">Administrator sign in</h1>
+          <p className="text-xs text-[#64748B] font-semibold">
             Restricted to administrator accounts.
           </p>
         </div>
@@ -77,7 +77,7 @@ function AdminLoginForm() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="admin-email" className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">
+            <label htmlFor="admin-email" className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">
               Email Address
             </label>
             <div className="relative">
@@ -90,13 +90,13 @@ function AdminLoginForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
                 placeholder="admin@company.com"
-                className="w-full text-xs border border-[#E2D5F8]/60 pl-10 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                className="w-full text-xs border border-[#E2E8F0]/60 pl-10 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
               />
             </div>
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="admin-password" className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">
+            <label htmlFor="admin-password" className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">
               Password
             </label>
             <div className="relative">
@@ -109,7 +109,7 @@ function AdminLoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
                 placeholder="••••••••"
-                className="w-full text-xs border border-[#E2D5F8]/60 pl-10 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                className="w-full text-xs border border-[#E2E8F0]/60 pl-10 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
               />
             </div>
           </div>
@@ -117,7 +117,7 @@ function AdminLoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 mt-4 text-white rounded-xl text-xs font-bold transition-all shadow-sm active:scale-95 disabled:opacity-50 flex items-center justify-center space-x-2 cursor-pointer select-none bg-[#0B012C] hover:bg-[#0B012C]/90"
+            className="w-full py-3 mt-4 text-white rounded-xl text-xs font-bold transition-all shadow-sm active:scale-95 disabled:opacity-50 flex items-center justify-center space-x-2 cursor-pointer select-none bg-[#0F172A] hover:bg-[#0F172A]/90"
           >
             {loading ? (
               <>
@@ -130,11 +130,11 @@ function AdminLoginForm() {
           </button>
         </form>
 
-        <div className="mt-8 pt-5 border-t border-[#E2D5F8]/40 text-center text-[10px] text-[#645A95] font-semibold select-none space-y-2">
+        <div className="mt-8 pt-5 border-t border-[#E2E8F0]/40 text-center text-[10px] text-[#64748B] font-semibold select-none space-y-2">
           <p>Unauthorized access is not permitted.</p>
           <Link
             href="/login"
-            className="text-[#645A95] hover:text-[#0B012C] font-bold inline-flex items-center gap-1 !no-underline hover:!underline"
+            className="text-[#64748B] hover:text-[#0F172A] font-bold inline-flex items-center gap-1 !no-underline hover:!underline"
           >
             <GraduationCap className="w-3 h-3" /> Student portal
           </Link>
@@ -150,7 +150,7 @@ function AdminLoginForm() {
 
 export default function AdminLoginPage() {
   return (
-    <div className="flex-1 bg-[#0B012C] min-h-screen flex items-center justify-center p-6 selection:bg-[#E9D5FF] selection:text-[#0B012C] font-sans">
+    <div className="flex-1 bg-[#0F172A] min-h-screen flex items-center justify-center p-6 selection:bg-[#EEF2FF] selection:text-[#0F172A] font-sans">
       <Suspense fallback={<Loader2 className="w-5 h-5 animate-spin text-white/60" />}>
         <AdminLoginForm />
       </Suspense>

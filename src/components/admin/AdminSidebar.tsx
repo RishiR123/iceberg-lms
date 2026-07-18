@@ -25,7 +25,7 @@ export function AdminSidebar({
   ];
 
   return (
-    <aside className="w-60 flex-shrink-0 bg-[#0B012C] text-white flex flex-col h-full select-none">
+    <aside className="w-60 flex-shrink-0 bg-[#0F172A] text-white flex flex-col h-full select-none">
       {/* Brand */}
       <div className="px-5 h-14 flex items-center gap-2 border-b border-white/10 flex-shrink-0">
         <Logo markClassName="w-4 h-4" className="text-sm" />
@@ -45,14 +45,14 @@ export function AdminSidebar({
               onClick={() => onSelect(item.id)}
               aria-current={active ? "page" : undefined}
               className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                active ? "bg-white text-[#0B012C] shadow-sm" : "text-white/60 hover:text-white hover:bg-white/10"
+                active ? "bg-white text-[#0F172A] shadow-sm" : "text-white/60 hover:text-white hover:bg-white/10"
               }`}
             >
               {item.icon}
               <span>{item.label}</span>
               <span
                 className={`ml-auto text-[9px] font-black px-1.5 py-0.5 rounded-full ${
-                  active ? "bg-[#0B012C]/10 text-[#0B012C]" : "bg-white/10 text-white/50"
+                  active ? "bg-[#0F172A]/10 text-[#0F172A]" : "bg-white/10 text-white/50"
                 }`}
               >
                 {item.count}
@@ -79,7 +79,7 @@ export function AdminSidebar({
       {/* Who's signed in */}
       <div className="p-3 border-t border-white/10 flex-shrink-0">
         <div className="flex items-center gap-2.5 px-2.5 py-2 rounded-xl bg-white/5">
-          <div className="w-7 h-7 flex-shrink-0 rounded-lg bg-[#FEF08A] text-[#0B012C] flex items-center justify-center font-black text-[11px]">
+          <div className="w-7 h-7 flex-shrink-0 rounded-lg bg-[#4F46E5] text-white flex items-center justify-center font-black text-[11px]">
             {userName.slice(0, 1).toUpperCase()}
           </div>
           <div className="min-w-0 flex-1">

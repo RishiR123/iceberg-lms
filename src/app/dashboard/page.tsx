@@ -28,22 +28,22 @@ export default async function DashboardPage() {
   const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
 
   return (
-    <div className="flex-1 bg-background min-h-full flex flex-col font-sans selection:bg-[#E9D5FF] selection:text-[#0B012C]">
+    <div className="flex-1 bg-background min-h-full flex flex-col font-sans selection:bg-[#EEF2FF] selection:text-[#0F172A]">
       
       {/* Upper header section */}
-      <section className="bg-white border-b border-[#E2D5F8]/40 py-10">
+      <section className="bg-white border-b border-[#E2E8F0]/40 py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="text-left space-y-2">
-            <div className="flex items-center space-x-2 text-[#0B012C] text-xs font-bold uppercase tracking-wider bg-[#F5EFFF] px-3 py-1 rounded-full w-max border border-[#E2D5F8]/40">
+            <div className="flex items-center space-x-2 text-[#0F172A] text-xs font-bold uppercase tracking-wider bg-[#F8FAFC] px-3 py-1 rounded-full w-max border border-[#E2E8F0]/40">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Iceberg Workspace</span>
             </div>
-            <h1 className="text-3xl font-black text-[#0B012C] tracking-tight">Welcome back! {user.name}</h1>
-            <p className="text-sm text-[#645A95] font-semibold">Track your progress and pick up where you left off.</p>
+            <h1 className="text-3xl font-black text-[#0F172A] tracking-tight">Welcome back! {user.name}</h1>
+            <p className="text-sm text-[#64748B] font-semibold">Track your progress and pick up where you left off.</p>
           </div>
           
           <div className="flex items-center gap-3 select-none">
-            <span className="text-xs font-bold text-[#0B012C] bg-[#FEF08A] px-3.5 py-1.5 rounded-full border border-[#E2D5F8]/40">
+            <span className="text-xs font-bold text-[#4F46E5] bg-[#EEF2FF] px-3.5 py-1.5 rounded-full border border-[#E2E8F0]/40">
               {user.role === "ADMIN" ? "Administrator" : "Student"}
             </span>
           </div>
@@ -60,30 +60,30 @@ export default async function DashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Completed */}
-            <div className="border border-[#E2D5F8]/60 bg-white rounded-3xl p-6 text-left relative overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <div className="absolute right-4 top-4 w-10 h-10 rounded-xl bg-[#D9F99D] flex items-center justify-center text-[#0B012C]">
+            <div className="border border-[#E2E8F0]/60 bg-white rounded-3xl p-6 text-left relative overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <div className="absolute right-4 top-4 w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center text-[#0F172A]">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <span className="text-xs font-bold text-[#645A95] uppercase tracking-wider block">Courses Completed</span>
-              <span className="text-4xl font-black text-[#0B012C] block mt-4">{stats.coursesCompleted}</span>
+              <span className="text-xs font-bold text-[#64748B] uppercase tracking-wider block">Courses Completed</span>
+              <span className="text-4xl font-black text-[#0F172A] block mt-4">{stats.coursesCompleted}</span>
             </div>
 
             {/* In Progress */}
-            <div className="border border-[#E2D5F8]/60 bg-[#F5EFFF]/30 rounded-3xl p-6 text-left relative overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <div className="absolute right-4 top-4 w-10 h-10 rounded-xl bg-[#FEF08A] flex items-center justify-center text-[#0B012C]">
+            <div className="border border-[#E2E8F0]/60 bg-[#F8FAFC]/30 rounded-3xl p-6 text-left relative overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <div className="absolute right-4 top-4 w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center text-[#0F172A]">
                 <Activity className="w-5 h-5" />
               </div>
-              <span className="text-xs font-bold text-[#645A95] uppercase tracking-wider block">Courses in Progress</span>
-              <span className="text-4xl font-black text-[#0B012C] block mt-4">{stats.coursesInProgress}</span>
+              <span className="text-xs font-bold text-[#64748B] uppercase tracking-wider block">Courses in Progress</span>
+              <span className="text-4xl font-black text-[#0F172A] block mt-4">{stats.coursesInProgress}</span>
             </div>
 
             {/* Activities Completed */}
-            <div className="border border-[#E2D5F8]/60 bg-white rounded-3xl p-6 text-left relative overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <div className="absolute right-4 top-4 w-10 h-10 rounded-xl bg-[#A5F3FC] flex items-center justify-center text-[#0B012C]">
+            <div className="border border-[#E2E8F0]/60 bg-white rounded-3xl p-6 text-left relative overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <div className="absolute right-4 top-4 w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center text-[#0F172A]">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <span className="text-xs font-bold text-[#645A95] uppercase tracking-wider block">Activities Completed</span>
-              <span className="text-4xl font-black text-[#0B012C] block mt-4">{stats.activitiesCompleted}</span>
+              <span className="text-xs font-bold text-[#64748B] uppercase tracking-wider block">Activities Completed</span>
+              <span className="text-4xl font-black text-[#0F172A] block mt-4">{stats.activitiesCompleted}</span>
             </div>
 
           </div>
@@ -93,20 +93,20 @@ export default async function DashboardPage() {
             
             {/* Left Block: Select Category & Tasks cards */}
             <div className="space-y-6">
-              <div className="flex items-center justify-between border-b border-[#E2D5F8]/30 pb-3">
-                <h3 className="text-xs font-black uppercase text-[#645A95] tracking-wider">Continue Learning</h3>
-                <span className="text-[10px] font-bold text-[#645A95]">
+              <div className="flex items-center justify-between border-b border-[#E2E8F0]/30 pb-3">
+                <h3 className="text-xs font-black uppercase text-[#64748B] tracking-wider">Continue Learning</h3>
+                <span className="text-[10px] font-bold text-[#64748B]">
                   {courses.length} assigned
                 </span>
               </div>
 
               <div className="space-y-4">
                 {inProgress.length === 0 ? (
-                  <div className="border border-dashed border-[#E2D5F8] rounded-3xl p-6 bg-white text-left space-y-2">
-                    <h4 className="font-extrabold text-sm text-[#0B012C]">
+                  <div className="border border-dashed border-[#E2E8F0] rounded-3xl p-6 bg-white text-left space-y-2">
+                    <h4 className="font-extrabold text-sm text-[#0F172A]">
                       {courses.length === 0 ? "No courses assigned yet" : "Nothing in progress"}
                     </h4>
-                    <p className="text-[11px] text-[#645A95] font-semibold">
+                    <p className="text-[11px] text-[#64748B] font-semibold">
                       {courses.length === 0
                         ? "Your administrator assigns courses to you — they'll appear here when they do."
                         : "You've finished everything assigned to you."}
@@ -116,14 +116,14 @@ export default async function DashboardPage() {
                   inProgress.map((course) => (
                     <div
                       key={course.courseId}
-                      className="border border-[#E2D5F8]/50 rounded-3xl p-5 bg-white text-left flex items-start justify-between gap-4 shadow-sm hover:shadow-md transition-all"
+                      className="border border-[#E2E8F0]/50 rounded-3xl p-5 bg-white text-left flex items-start justify-between gap-4 shadow-sm hover:shadow-md transition-all"
                     >
                       <div className="space-y-2 min-w-0">
-                        <span className="bg-[#F5EFFF] text-[#0B012C] font-bold text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider block w-max">
+                        <span className="bg-[#F8FAFC] text-[#0F172A] font-bold text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider block w-max">
                           {course.percent}% complete
                         </span>
-                        <h4 className="font-extrabold text-sm text-[#0B012C] truncate">{course.title}</h4>
-                        <span className="text-[10px] text-[#645A95] font-semibold block">
+                        <h4 className="font-extrabold text-sm text-[#0F172A] truncate">{course.title}</h4>
+                        <span className="text-[10px] text-[#64748B] font-semibold block">
                           {course.completedActivities} of {course.totalActivities} activities done
                         </span>
                       </div>
@@ -133,7 +133,7 @@ export default async function DashboardPage() {
                             ? `/learn/${course.courseId}/${course.nextActivityId}`
                             : `/course/${course.courseId}`
                         }
-                        className="w-8 h-8 flex-shrink-0 rounded-full bg-[#0B012C] hover:bg-[#0B012C]/90 text-white flex items-center justify-center text-xs"
+                        className="w-8 h-8 flex-shrink-0 rounded-full bg-[#0F172A] hover:bg-[#0F172A]/90 text-white flex items-center justify-center text-xs"
                         aria-label={`Continue ${course.title}`}
                       >
                         ➔
@@ -145,10 +145,10 @@ export default async function DashboardPage() {
             </div>
 
             {/* Right Block: Active hours weekly bar chart */}
-            <div className="border border-[#E2D5F8]/60 bg-[#0B012C] rounded-3xl p-6 text-left flex flex-col justify-between shadow-md text-white min-h-[340px]">
+            <div className="border border-[#E2E8F0]/60 bg-[#0F172A] rounded-3xl p-6 text-left flex flex-col justify-between shadow-md text-white min-h-[340px]">
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
                 <div>
-                  <h3 className="text-xs font-black uppercase text-[#E9D5FF] tracking-wider">This Week</h3>
+                  <h3 className="text-xs font-black uppercase text-[#EEF2FF] tracking-wider">This Week</h3>
                   <span className="text-[10px] text-white/60 font-semibold block">Activities completed per day</span>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default async function DashboardPage() {
                     <div className="w-full bg-white/10 rounded-t-lg relative overflow-hidden h-36 flex items-end">
                       <div
                         className={`w-full rounded-t-lg transition-all duration-500 ${
-                          day.count > 0 ? "bg-[#FEF08A]" : "bg-transparent"
+                          day.count > 0 ? "bg-[#4F46E5]" : "bg-transparent"
                         }`}
                         style={{ height: `${Math.round((day.count / peakDay) * 100)}%` }}
                         title={`${day.count} completed`}
@@ -180,11 +180,11 @@ export default async function DashboardPage() {
           </div>
 
           {/* 3. Task Schedule Calendar Widget block */}
-          <div className="border border-[#E2D5F8]/60 bg-white rounded-3xl p-6 text-left shadow-sm">
-            <div className="flex items-center justify-between border-b border-[#E2D5F8]/30 pb-3 mb-4">
+          <div className="border border-[#E2E8F0]/60 bg-white rounded-3xl p-6 text-left shadow-sm">
+            <div className="flex items-center justify-between border-b border-[#E2E8F0]/30 pb-3 mb-4">
               <div>
-                <span className="text-[10px] font-bold text-[#645A95] uppercase tracking-wider block">Calendar</span>
-                <h3 className="text-base font-black text-[#0B012C]">
+                <span className="text-[10px] font-bold text-[#64748B] uppercase tracking-wider block">Calendar</span>
+                <h3 className="text-base font-black text-[#0F172A]">
                   {today.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}
                 </h3>
               </div>
@@ -192,7 +192,7 @@ export default async function DashboardPage() {
 
             <div className="grid grid-cols-7 gap-2 text-center select-none font-bold">
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, idx) => (
-                <span key={idx} className="text-xs text-[#645A95] font-extrabold py-1">{day}</span>
+                <span key={idx} className="text-xs text-[#64748B] font-extrabold py-1">{day}</span>
               ))}
               {Array.from({ length: daysInMonth }).map((_, idx) => {
                 const dateNum = idx + 1;
@@ -202,8 +202,8 @@ export default async function DashboardPage() {
                     key={idx}
                     className={`text-xs py-2 rounded-xl flex items-center justify-center border transition-all ${
                       isToday
-                        ? "bg-[#FEF08A] text-[#0B012C] border-[#0B012C]/30 font-black scale-105 shadow-sm"
-                        : "text-[#0B012C] border-transparent"
+                        ? "bg-[#4F46E5] text-white border-[#4F46E5] font-black scale-105 shadow-sm"
+                        : "text-[#0F172A] border-transparent"
                     }`}
                   >
                     {dateNum}
@@ -219,23 +219,23 @@ export default async function DashboardPage() {
         <div className="lg:col-span-4 space-y-6">
           
           {/* 1. Ongoing Courses Progress Panel */}
-          <div className="border border-[#E2D5F8]/60 bg-white rounded-3xl p-6 text-left shadow-sm space-y-5">
-            <div className="border-b border-[#E2D5F8]/30 pb-3">
-              <h3 className="text-xs font-black uppercase text-[#645A95] tracking-wider">Ongoing Courses</h3>
+          <div className="border border-[#E2E8F0]/60 bg-white rounded-3xl p-6 text-left shadow-sm space-y-5">
+            <div className="border-b border-[#E2E8F0]/30 pb-3">
+              <h3 className="text-xs font-black uppercase text-[#64748B] tracking-wider">Ongoing Courses</h3>
             </div>
 
             <div className="space-y-4">
               {courses.length === 0 ? (
-                <p className="text-[11px] text-[#645A95] font-semibold">No enrollments yet.</p>
+                <p className="text-[11px] text-[#64748B] font-semibold">No enrollments yet.</p>
               ) : (
                 courses.map((course) => (
                   <div key={course.courseId} className="space-y-1">
-                    <div className="flex items-center justify-between text-xs font-bold text-[#0B012C] gap-2">
+                    <div className="flex items-center justify-between text-xs font-bold text-[#0F172A] gap-2">
                       <span className="truncate">{course.title}</span>
                       <span className="flex-shrink-0">{course.percent}%</span>
                     </div>
-                    <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-[#E2D5F8]/20">
-                      <div className="bg-[#0B012C] h-full rounded-full" style={{ width: `${course.percent}%` }} />
+                    <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-[#E2E8F0]/20">
+                      <div className="bg-[#0F172A] h-full rounded-full" style={{ width: `${course.percent}%` }} />
                     </div>
                   </div>
                 ))

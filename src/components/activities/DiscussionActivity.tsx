@@ -6,7 +6,7 @@ export function DiscussionActivity({ activityId, content }: { activityId: string
   return (
     <div className="space-y-6">
       {content?.trim() && (
-        <div className="p-5 md:p-6 border border-[#E2D5F8]/40 rounded-2xl bg-white">
+        <div className="p-5 md:p-6 border border-[#E2E8F0]/40 rounded-2xl bg-white">
           <Prose html={content} />
         </div>
       )}

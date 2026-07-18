@@ -76,20 +76,20 @@ export function BulkAssign({
       {!open ? (
         <button
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-[#E2D5F8] text-[#0B012C] text-[11px] font-bold rounded-xl hover:bg-[#F5EFFF] transition-all active:scale-95 cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-[#E2E8F0] text-[#0F172A] text-[11px] font-bold rounded-xl hover:bg-[#F8FAFC] transition-all active:scale-95 cursor-pointer"
         >
           <Layers className="w-3.5 h-3.5" /> Bulk assign
         </button>
       ) : (
-        <div className="rounded-2xl border border-[#E2D5F8] bg-[#F5EFFF]/30 p-5 space-y-4 max-w-2xl">
+        <div className="rounded-2xl border border-[#E2E8F0] bg-[#F8FAFC]/30 p-5 space-y-4 max-w-2xl">
           <div className="flex items-center justify-between">
-            <h4 className="text-xs font-black text-[#0B012C]">Assign a course to multiple students</h4>
+            <h4 className="text-xs font-black text-[#0F172A]">Assign a course to multiple students</h4>
             <button
               onClick={() => {
                 setOpen(false);
                 reset();
               }}
-              className="text-slate-400 hover:text-[#0B012C] cursor-pointer"
+              className="text-slate-400 hover:text-[#0F172A] cursor-pointer"
               aria-label="Cancel"
             >
               <X className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export function BulkAssign({
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="bulk-course" className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">
+            <label htmlFor="bulk-course" className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">
               Course
             </label>
             <select
@@ -108,7 +108,7 @@ export function BulkAssign({
                 setSelected(new Set());
               }}
               disabled={isPending}
-              className="w-full text-xs border border-[#E2D5F8]/60 px-3 py-2.5 rounded-xl bg-white focus:outline-none focus:border-[#2563EB]/60 font-semibold text-[#0B012C] disabled:opacity-60"
+              className="w-full text-xs border border-[#E2E8F0]/60 px-3 py-2.5 rounded-xl bg-white focus:outline-none focus:border-[#4F46E5]/60 font-semibold text-[#0F172A] disabled:opacity-60"
             >
               <option value="">Select a course…</option>
               {courses.map((c) => (
@@ -122,7 +122,7 @@ export function BulkAssign({
           {course && (
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider">
+                <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider">
                   Students ({selected.size} selected)
                 </label>
                 {assignable.length > 0 && (
@@ -130,21 +130,21 @@ export function BulkAssign({
                     onClick={() =>
                       setSelected(allSelected ? new Set() : new Set(assignable.map((s) => s.id)))
                     }
-                    className="text-[10px] font-bold text-[#2563EB] hover:underline cursor-pointer"
+                    className="text-[10px] font-bold text-[#4F46E5] hover:underline cursor-pointer"
                   >
                     {allSelected ? "Clear all" : "Select all unassigned"}
                   </button>
                 )}
               </div>
 
-              <div className="max-h-56 overflow-y-auto space-y-1 rounded-xl border border-[#E2D5F8]/60 bg-white p-2">
+              <div className="max-h-56 overflow-y-auto space-y-1 rounded-xl border border-[#E2E8F0]/60 bg-white p-2">
                 {students.map((s) => {
                   const already = course.assignedUserIds.includes(s.id);
                   return (
                     <label
                       key={s.id}
                       className={`flex items-center gap-2.5 px-2 py-1.5 rounded-lg select-none ${
-                        already ? "opacity-45" : "cursor-pointer hover:bg-[#F5EFFF]/50"
+                        already ? "opacity-45" : "cursor-pointer hover:bg-[#F8FAFC]/50"
                       }`}
                     >
                       <input
@@ -152,11 +152,11 @@ export function BulkAssign({
                         checked={already || selected.has(s.id)}
                         disabled={already || isPending}
                         onChange={() => toggle(s.id)}
-                        className="accent-[#0B012C] w-3.5 h-3.5"
+                        className="accent-[#0F172A] w-3.5 h-3.5"
                       />
                       <span className="min-w-0 flex-1">
-                        <span className="text-[11px] font-bold text-[#0B012C] truncate block">{s.name}</span>
-                        <span className="text-[9px] text-[#645A95] font-semibold truncate block">{s.email}</span>
+                        <span className="text-[11px] font-bold text-[#0F172A] truncate block">{s.name}</span>
+                        <span className="text-[9px] text-[#64748B] font-semibold truncate block">{s.email}</span>
                       </span>
                       {already && (
                         <span className="text-[9px] font-black uppercase text-green-700 bg-green-50 px-1.5 py-0.5 rounded-full flex-shrink-0">
@@ -179,7 +179,7 @@ export function BulkAssign({
           <button
             onClick={submit}
             disabled={isPending || !courseId || selected.size === 0}
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0B012C] text-white text-[11px] font-bold rounded-xl hover:bg-[#0B012C]/90 transition-all active:scale-95 disabled:opacity-40 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0F172A] text-white text-[11px] font-bold rounded-xl hover:bg-[#0F172A]/90 transition-all active:scale-95 disabled:opacity-40 cursor-pointer"
           >
             {isPending ? (
               <>

@@ -40,17 +40,17 @@ export function Navbar({ user }: NavbarProps) {
   const initial = user?.name ? user.name.slice(0, 1).toUpperCase() : "T";
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-[#E2D5F8]/40 bg-white/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 w-full border-b border-[#E2E8F0]/40 bg-white/80 backdrop-blur-md">
       <div className="container flex h-14 items-center px-6 max-w-7xl mx-auto justify-between gap-6">
         {/* Brand → the learner's home */}
-        <Link href="/dashboard" className="text-[#0B012C] !no-underline hover:!no-underline">
+        <Link href="/dashboard" className="text-[#0F172A] !no-underline hover:!no-underline">
           <Logo markClassName="w-5 h-5" className="text-base" />
         </Link>
 
         <div className="flex items-center space-x-4 select-none">
           <Link
             href="/dashboard"
-            className="text-xs font-bold text-[#645A95] hover:text-[#0B012C] transition-colors !no-underline hover:!no-underline inline-flex items-center gap-1.5"
+            className="text-xs font-bold text-[#64748B] hover:text-[#0F172A] transition-colors !no-underline hover:!no-underline inline-flex items-center gap-1.5"
           >
             <LayoutDashboard className="w-3.5 h-3.5" /> Dashboard
           </Link>
@@ -58,7 +58,7 @@ export function Navbar({ user }: NavbarProps) {
           {user?.role === "ADMIN" && (
             <Link
               href="/admin"
-              className="text-xs font-bold text-[#645A95] hover:text-[#0B012C] transition-colors !no-underline hover:!no-underline"
+              className="text-xs font-bold text-[#64748B] hover:text-[#0F172A] transition-colors !no-underline hover:!no-underline"
             >
               Admin
             </Link>
@@ -70,7 +70,7 @@ export function Navbar({ user }: NavbarProps) {
             title="View profile"
             className="relative group !no-underline hover:!no-underline"
           >
-            <div className="w-8 h-8 rounded-full bg-[#E9D5FF] group-hover:bg-[#FEF08A] text-[#0B012C] flex items-center justify-center font-black text-[11px] transition-all border border-[#E2D5F8]/60">
+            <div className="w-8 h-8 rounded-full bg-[#4F46E5] group-hover:bg-[#4338CA] text-white flex items-center justify-center font-black text-[11px] transition-all">
               {initial}
             </div>
             <span className="absolute bottom-0 right-0 w-2 h-2 bg-green-500 border border-white rounded-full" />

@@ -44,7 +44,7 @@ export function PasswordForm() {
     autoComplete: string
   ) => (
     <div className="space-y-1.5">
-      <label htmlFor={id} className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">
+      <label htmlFor={id} className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">
         {label}
       </label>
       <div className="relative">
@@ -57,7 +57,7 @@ export function PasswordForm() {
           onChange={(e) => onChange(e.target.value)}
           disabled={isPending}
           placeholder="••••••••"
-          className="w-full text-xs border border-[#E2D5F8]/60 pl-10 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#2563EB]/60 focus:bg-white transition-all font-semibold text-[#0B012C] disabled:opacity-60"
+          className="w-full text-xs border border-[#E2E8F0]/60 pl-10 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#4F46E5]/60 focus:bg-white transition-all font-semibold text-[#0F172A] disabled:opacity-60"
         />
       </div>
     </div>
@@ -86,7 +86,7 @@ export function PasswordForm() {
         <button
           type="submit"
           disabled={isPending || !currentPassword || !newPassword || !confirmPassword}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0B012C] text-white text-[11px] font-bold rounded-xl hover:bg-[#0B012C]/90 transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0F172A] text-white text-[11px] font-bold rounded-xl hover:bg-[#0F172A]/90 transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
         >
           {isPending ? (
             <>
@@ -100,7 +100,7 @@ export function PasswordForm() {
             "Change password"
           )}
         </button>
-        <span className="text-[10px] text-[#645A95] font-semibold">At least 8 characters.</span>
+        <span className="text-[10px] text-[#64748B] font-semibold">At least 8 characters.</span>
       </div>
     </form>
   );

@@ -6,33 +6,33 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0B012C;
+  --foreground: #0F172A;
   --card: #ffffff;
-  --card-foreground: #0B012C;
+  --card-foreground: #0F172A;
   --popover: #ffffff;
-  --popover-foreground: #0B012C;
-  --primary: #2563EB;
+  --popover-foreground: #0F172A;
+  --primary: #4F46E5;
   --primary-foreground: #ffffff;
-  --secondary: #E0F2FE;
-  --secondary-foreground: #0369A1;
-  --muted: #E0F2FE;
-  --muted-foreground: #645A95;
-  --accent: #E0F2FE;
-  --accent-foreground: #0369A1;
+  --secondary: #EEF2FF;
+  --secondary-foreground: #4F46E5;
+  --muted: #EEF2FF;
+  --muted-foreground: #64748B;
+  --accent: #EEF2FF;
+  --accent-foreground: #4F46E5;
   --destructive: #F43F5E;
   --destructive-foreground: #ffffff;
-  --border: #E2D5F8;
-  --input: #E2D5F8;
-  --ring: #2563EB;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #4F46E5;
   --radius: 0.75rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0B012C;
-  --sidebar-primary: #2563EB;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: #4F46E5;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #E0F2FE;
-  --sidebar-accent-foreground: #0369A1;
-  --sidebar-border: #E2D5F8;
-  --sidebar-ring: #2563EB;
+  --sidebar-accent: #EEF2FF;
+  --sidebar-accent-foreground: #4F46E5;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #4F46E5;
 }
 
 @theme inline {
@@ -76,31 +76,31 @@
 }
 
 .dark {
-  --background: #0B012C;
-  --foreground: #F5EFFF;
-  --card: #150B3E;
-  --card-foreground: #F5EFFF;
-  --popover: #150B3E;
-  --popover-foreground: #F5EFFF;
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --card: #1E293B;
+  --card-foreground: #F8FAFC;
+  --popover: #1E293B;
+  --popover-foreground: #F8FAFC;
   --primary: #3B82F6;
-  --primary-foreground: #0B012C;
+  --primary-foreground: #0F172A;
   --secondary: #1E3A8A;
-  --secondary-foreground: #F5EFFF;
+  --secondary-foreground: #F8FAFC;
   --muted: #1E3A8A;
   --muted-foreground: #9E94D0;
   --accent: #1E3A8A;
-  --accent-foreground: #F5EFFF;
+  --accent-foreground: #F8FAFC;
   --destructive: #F43F5E;
   --destructive-foreground: #ffffff;
   --border: #261B56;
   --input: #261B56;
   --ring: #3B82F6;
-  --sidebar: #150B3E;
-  --sidebar-foreground: #F5EFFF;
+  --sidebar: #1E293B;
+  --sidebar-foreground: #F8FAFC;
   --sidebar-primary: #3B82F6;
-  --sidebar-primary-foreground: #0B012C;
+  --sidebar-primary-foreground: #0F172A;
   --sidebar-accent: #1E3A8A;
-  --sidebar-accent-foreground: #F5EFFF;
+  --sidebar-accent-foreground: #F8FAFC;
   --sidebar-border: #261B56;
   --sidebar-ring: #3B82F6;
 }

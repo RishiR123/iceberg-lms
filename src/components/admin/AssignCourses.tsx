@@ -47,7 +47,7 @@ export function AssignCourses({
 
   if (courses.length === 0) {
     return (
-      <p className="text-[11px] text-[#645A95] font-semibold py-2">
+      <p className="text-[11px] text-[#64748B] font-semibold py-2">
         No courses exist yet — create one in the Courses section first.
       </p>
     );
@@ -68,7 +68,7 @@ export function AssignCourses({
             Assigned to {userName} ({assigned.length})
           </p>
           {assigned.length === 0 ? (
-            <p className="text-[11px] text-[#645A95] font-semibold py-2">
+            <p className="text-[11px] text-[#64748B] font-semibold py-2">
               No courses assigned yet.
             </p>
           ) : (
@@ -76,11 +76,11 @@ export function AssignCourses({
               {assigned.map((c) => (
                 <div
                   key={c.id}
-                  className="flex items-center justify-between gap-3 bg-[#F5EFFF]/40 border border-[#E2D5F8]/60 rounded-xl px-3 py-2"
+                  className="flex items-center justify-between gap-3 bg-[#F8FAFC]/40 border border-[#E2E8F0]/60 rounded-xl px-3 py-2"
                 >
                   <div className="min-w-0">
-                    <p className="text-[11px] font-bold text-[#0B012C] truncate">{c.title}</p>
-                    <p className="text-[9px] text-[#645A95] font-semibold">
+                    <p className="text-[11px] font-bold text-[#0F172A] truncate">{c.title}</p>
+                    <p className="text-[9px] text-[#64748B] font-semibold">
                       {c.activityCount} activities · {c.difficulty}
                     </p>
                   </div>
@@ -104,7 +104,7 @@ export function AssignCourses({
             Available ({available.length})
           </p>
           {available.length === 0 ? (
-            <p className="text-[11px] text-[#645A95] font-semibold py-2 inline-flex items-center gap-1.5">
+            <p className="text-[11px] text-[#64748B] font-semibold py-2 inline-flex items-center gap-1.5">
               <Check className="w-3 h-3" /> Assigned to every course.
             </p>
           ) : (
@@ -112,18 +112,18 @@ export function AssignCourses({
               {available.map((c) => (
                 <div
                   key={c.id}
-                  className="flex items-center justify-between gap-3 bg-white border border-[#E2D5F8]/60 rounded-xl px-3 py-2"
+                  className="flex items-center justify-between gap-3 bg-white border border-[#E2E8F0]/60 rounded-xl px-3 py-2"
                 >
                   <div className="min-w-0">
-                    <p className="text-[11px] font-bold text-[#0B012C] truncate">{c.title}</p>
-                    <p className="text-[9px] text-[#645A95] font-semibold">
+                    <p className="text-[11px] font-bold text-[#0F172A] truncate">{c.title}</p>
+                    <p className="text-[9px] text-[#64748B] font-semibold">
                       {c.activityCount} activities · {c.difficulty}
                     </p>
                   </div>
                   <button
                     onClick={() => run(c.id, () => assignCourseAction(userId, c.id))}
                     disabled={busyId === c.id}
-                    className="flex-shrink-0 inline-flex items-center gap-1 text-[10px] font-black text-[#2563EB] hover:underline disabled:opacity-40 cursor-pointer"
+                    className="flex-shrink-0 inline-flex items-center gap-1 text-[10px] font-black text-[#4F46E5] hover:underline disabled:opacity-40 cursor-pointer"
                   >
                     {busyId === c.id ? (
                       <Loader2 className="w-3 h-3 animate-spin" />
@@ -140,7 +140,7 @@ export function AssignCourses({
         </div>
       </div>
 
-      <p className="text-[10px] text-[#645A95] font-semibold">
+      <p className="text-[10px] text-[#64748B] font-semibold">
         Removing an assignment hides the course from their dashboard but keeps their progress, so
         reassigning it restores their history.
       </p>

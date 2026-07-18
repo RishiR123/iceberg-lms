@@ -102,7 +102,7 @@ export function CreateUserForm() {
             </button>
           </div>
 
-          <div className="bg-white rounded-xl border border-green-200 p-3 font-mono text-[11px] text-[#0B012C] space-y-1">
+          <div className="bg-white rounded-xl border border-green-200 p-3 font-mono text-[11px] text-[#0F172A] space-y-1">
             <div>
               <span className="text-slate-400">email </span>
               {created.email}
@@ -126,21 +126,21 @@ export function CreateUserForm() {
       {!open ? (
         <button
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0B012C] text-white text-[11px] font-bold rounded-xl hover:bg-[#0B012C]/90 transition-all active:scale-95 cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0F172A] text-white text-[11px] font-bold rounded-xl hover:bg-[#0F172A]/90 transition-all active:scale-95 cursor-pointer"
         >
           <UserPlus className="w-3.5 h-3.5" /> New account
         </button>
       ) : (
-        <form onSubmit={submit} className="rounded-2xl border border-[#E2D5F8] bg-[#F5EFFF]/30 p-5 space-y-4">
+        <form onSubmit={submit} className="rounded-2xl border border-[#E2E8F0] bg-[#F8FAFC]/30 p-5 space-y-4">
           <div className="flex items-center justify-between">
-            <h4 className="text-xs font-black text-[#0B012C]">Create an account</h4>
+            <h4 className="text-xs font-black text-[#0F172A]">Create an account</h4>
             <button
               type="button"
               onClick={() => {
                 setOpen(false);
                 reset();
               }}
-              className="text-slate-400 hover:text-[#0B012C] cursor-pointer"
+              className="text-slate-400 hover:text-[#0F172A] cursor-pointer"
               aria-label="Cancel"
             >
               <X className="w-3.5 h-3.5" />
@@ -149,7 +149,7 @@ export function CreateUserForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label htmlFor="nu-name" className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">
+              <label htmlFor="nu-name" className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">
                 Full Name
               </label>
               <input
@@ -159,12 +159,12 @@ export function CreateUserForm() {
                 required
                 disabled={isPending}
                 placeholder="Ada Lovelace"
-                className="w-full text-xs border border-[#E2D5F8]/60 px-4 py-3 rounded-xl bg-white focus:outline-none focus:border-[#2563EB]/60 font-semibold text-[#0B012C] disabled:opacity-60"
+                className="w-full text-xs border border-[#E2E8F0]/60 px-4 py-3 rounded-xl bg-white focus:outline-none focus:border-[#4F46E5]/60 font-semibold text-[#0F172A] disabled:opacity-60"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="nu-email" className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">
+              <label htmlFor="nu-email" className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">
                 Email
               </label>
               <input
@@ -175,14 +175,14 @@ export function CreateUserForm() {
                 required
                 disabled={isPending}
                 placeholder="ada@company.com"
-                className="w-full text-xs border border-[#E2D5F8]/60 px-4 py-3 rounded-xl bg-white focus:outline-none focus:border-[#2563EB]/60 font-semibold text-[#0B012C] disabled:opacity-60"
+                className="w-full text-xs border border-[#E2E8F0]/60 px-4 py-3 rounded-xl bg-white focus:outline-none focus:border-[#4F46E5]/60 font-semibold text-[#0F172A] disabled:opacity-60"
               />
             </div>
           </div>
 
           <div className="space-y-1.5">
-            <span className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Role</span>
-            <div className="grid grid-cols-2 gap-2 bg-white p-1 rounded-xl border border-[#E2D5F8]/60 max-w-xs">
+            <span className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Role</span>
+            <div className="grid grid-cols-2 gap-2 bg-white p-1 rounded-xl border border-[#E2E8F0]/60 max-w-xs">
               {(["STUDENT", "ADMIN"] as const).map((r) => (
                 <button
                   key={r}
@@ -190,7 +190,7 @@ export function CreateUserForm() {
                   onClick={() => setRole(r)}
                   disabled={isPending}
                   className={`py-2 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all cursor-pointer ${
-                    role === r ? "bg-[#0B012C] text-white shadow-sm" : "text-[#645A95] hover:bg-[#F5EFFF]"
+                    role === r ? "bg-[#0F172A] text-white shadow-sm" : "text-[#64748B] hover:bg-[#F8FAFC]"
                   }`}
                 >
                   {r === "STUDENT" ? "Student" : "Admin"}
@@ -206,16 +206,16 @@ export function CreateUserForm() {
                 checked={autoPassword}
                 onChange={(e) => setAutoPassword(e.target.checked)}
                 disabled={isPending}
-                className="accent-[#0B012C] w-3.5 h-3.5"
+                className="accent-[#0F172A] w-3.5 h-3.5"
               />
-              <span className="text-[11px] font-semibold text-[#0B012C]">
+              <span className="text-[11px] font-semibold text-[#0F172A]">
                 Generate a strong password automatically
               </span>
             </label>
 
             {!autoPassword && (
               <div className="space-y-1.5">
-                <label htmlFor="nu-pw" className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">
+                <label htmlFor="nu-pw" className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">
                   Initial Password
                 </label>
                 <input
@@ -226,7 +226,7 @@ export function CreateUserForm() {
                   required
                   disabled={isPending}
                   placeholder="At least 8 characters"
-                  className="w-full max-w-xs text-xs border border-[#E2D5F8]/60 px-4 py-3 rounded-xl bg-white focus:outline-none focus:border-[#2563EB]/60 font-semibold text-[#0B012C] disabled:opacity-60"
+                  className="w-full max-w-xs text-xs border border-[#E2E8F0]/60 px-4 py-3 rounded-xl bg-white focus:outline-none focus:border-[#4F46E5]/60 font-semibold text-[#0F172A] disabled:opacity-60"
                 />
               </div>
             )}
@@ -237,9 +237,9 @@ export function CreateUserForm() {
                 checked={sendEmail}
                 onChange={(e) => setSendEmail(e.target.checked)}
                 disabled={isPending}
-                className="accent-[#0B012C] w-3.5 h-3.5"
+                className="accent-[#0F172A] w-3.5 h-3.5"
               />
-              <span className="text-[11px] font-semibold text-[#0B012C]">
+              <span className="text-[11px] font-semibold text-[#0F172A]">
                 Email the sign-in details to this address
               </span>
             </label>
@@ -254,7 +254,7 @@ export function CreateUserForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0B012C] text-white text-[11px] font-bold rounded-xl hover:bg-[#0B012C]/90 transition-all active:scale-95 disabled:opacity-40 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#0F172A] text-white text-[11px] font-bold rounded-xl hover:bg-[#0F172A]/90 transition-all active:scale-95 disabled:opacity-40 cursor-pointer"
           >
             {isPending ? (
               <>

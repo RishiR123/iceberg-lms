@@ -520,21 +520,21 @@ export function AdminDashboard({
   const getActivityTypeConfig = (type: string) => {
     switch (type) {
       case "VIDEO":
-        return { color: "bg-[#F5EFFF] text-[#0B012C]", icon: <Video className="w-3.5 h-3.5 text-[#0B012C]" /> };
+        return { color: "bg-[#F8FAFC] text-[#0F172A]", icon: <Video className="w-3.5 h-3.5 text-[#0F172A]" /> };
       case "READING":
-        return { color: "bg-[#D9F99D] text-green-900", icon: <BookOpen className="w-3.5 h-3.5 text-green-900" /> };
+        return { color: "bg-[#EEF2FF] text-green-900", icon: <BookOpen className="w-3.5 h-3.5 text-green-900" /> };
       case "QUIZ":
       case "PRACTICE_QUIZ":
-        return { color: "bg-[#FEF08A] text-[#0B012C]", icon: <HelpCircle className="w-3.5 h-3.5 text-[#0B012C]" /> };
+        return { color: "bg-[#EEF2FF] text-[#4F46E5]", icon: <HelpCircle className="w-3.5 h-3.5 text-[#0F172A]" /> };
       case "DISCUSSION":
-        return { color: "bg-[#A5F3FC] text-cyan-900", icon: <MessageSquare className="w-3.5 h-3.5 text-cyan-900" /> };
+        return { color: "bg-[#EEF2FF] text-cyan-900", icon: <MessageSquare className="w-3.5 h-3.5 text-cyan-900" /> };
       default:
         return { color: "bg-slate-100 text-slate-700", icon: <Video className="w-3.5 h-3.5 text-slate-700" /> };
     }
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background selection:bg-[#E9D5FF] selection:text-[#0B012C] font-sans">
+    <div className="flex h-screen overflow-hidden bg-background selection:bg-[#EEF2FF] selection:text-[#0F172A] font-sans">
       
       <AdminSidebar
         section={section}
@@ -546,10 +546,10 @@ export function AdminDashboard({
 
       {/* Content column */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
-        <header className="h-14 flex-shrink-0 border-b border-[#E2D5F8]/40 bg-white flex items-center justify-between px-6 select-none">
+        <header className="h-14 flex-shrink-0 border-b border-[#E2E8F0]/40 bg-white flex items-center justify-between px-6 select-none">
           <div>
-            <h1 className="text-sm font-black text-[#0B012C] capitalize">{section}</h1>
-            <p className="text-[10px] text-[#645A95] font-semibold">
+            <h1 className="text-sm font-black text-[#0F172A] capitalize">{section}</h1>
+            <p className="text-[10px] text-[#64748B] font-semibold">
               {section === "courses"
                 ? `${courses.length} course${courses.length === 1 ? "" : "s"} published`
                 : `${users.length} account${users.length === 1 ? "" : "s"}`}
@@ -572,7 +572,7 @@ export function AdminDashboard({
       {section === "people" && (
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-6xl mx-auto px-6 py-10">
-            <div className="bg-white border border-[#E2D5F8]/50 rounded-3xl p-6 md:p-8 shadow-sm">
+            <div className="bg-white border border-[#E2E8F0]/50 rounded-3xl p-6 md:p-8 shadow-sm">
               <PeoplePanel users={users} currentUserId={currentUserId} courses={assignableCourses} />
             </div>
           </div>
@@ -584,18 +584,18 @@ export function AdminDashboard({
       <div className="flex-1 flex min-h-0 overflow-hidden">
         
         {/* LEFT COLUMN: Track Selector Catalog Sidebar */}
-        <aside className="w-80 flex-shrink-0 border-r border-[#E2D5F8]/40 bg-white flex flex-col h-full select-none">
-          <div className="p-4 border-b border-[#E2D5F8]/30 flex items-center justify-between">
+        <aside className="w-80 flex-shrink-0 border-r border-[#E2E8F0]/40 bg-white flex flex-col h-full select-none">
+          <div className="p-4 border-b border-[#E2E8F0]/30 flex items-center justify-between">
             <div className="text-left">
-              <h2 className="text-xs font-black uppercase text-[#645A95] tracking-wider flex items-center gap-1.5">
-                <LayoutDashboard className="w-4 h-4 text-[#0B012C]" /> Active Tracks
+              <h2 className="text-xs font-black uppercase text-[#64748B] tracking-wider flex items-center gap-1.5">
+                <LayoutDashboard className="w-4 h-4 text-[#0F172A]" /> Active Tracks
               </h2>
               <span className="text-[10px] text-slate-400 font-bold block mt-0.5">{courses.length} courses loaded</span>
             </div>
             <button 
               onClick={handleCreateCourse}
               disabled={loading}
-              className="p-2 rounded-xl bg-[#0B012C] hover:bg-[#0B012C]/90 text-white disabled:opacity-50 transition-all shadow-md cursor-pointer flex items-center justify-center hover:scale-102"
+              className="p-2 rounded-xl bg-[#0F172A] hover:bg-[#0F172A]/90 text-white disabled:opacity-50 transition-all shadow-md cursor-pointer flex items-center justify-center hover:scale-102"
               title="Create New Course"
             >
               <Plus className="w-4 h-4" />
@@ -613,17 +613,17 @@ export function AdminDashboard({
                   onClick={() => setActiveCourseId(course.id)}
                   className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col gap-2 ${
                     isSelected 
-                      ? "bg-[#F5EFFF]/45 border-[#0B012C] shadow-inner font-extrabold" 
-                      : "border-[#E2D5F8]/30 bg-[#FAFAFA]/40 hover:bg-slate-50"
+                      ? "bg-[#F8FAFC]/45 border-[#0F172A] shadow-inner font-extrabold" 
+                      : "border-[#E2E8F0]/30 bg-[#FAFAFA]/40 hover:bg-slate-50"
                   }`}
                 >
                   <div>
-                    <h3 className={`text-xs font-black leading-snug line-clamp-2 ${isSelected ? "text-[#0B012C]" : "text-[#645A95]"}`}>
+                    <h3 className={`text-xs font-black leading-snug line-clamp-2 ${isSelected ? "text-[#0F172A]" : "text-[#64748B]"}`}>
                       {course.title}
                     </h3>
                   </div>
                   <div className="flex items-center justify-between text-[9px] font-bold">
-                    <span className="bg-[#E9D5FF] text-[#0B012C] px-2 py-0.5 rounded-full uppercase">{course.organization}</span>
+                    <span className="bg-[#EEF2FF] text-[#0F172A] px-2 py-0.5 rounded-full uppercase">{course.organization}</span>
                     <span className="text-slate-400">{totalActs} units</span>
                   </div>
                 </div>
@@ -631,8 +631,8 @@ export function AdminDashboard({
             })}
           </div>
 
-          <div className="p-4 border-t border-[#E2D5F8]/30 bg-[#F5EFFF]/10 text-[10px] text-[#645A95] flex justify-between items-center font-bold">
-            <a href="/dashboard" className="hover:text-[#0B012C] flex items-center gap-1 transition-colors !no-underline hover:!no-underline">
+          <div className="p-4 border-t border-[#E2E8F0]/30 bg-[#F8FAFC]/10 text-[10px] text-[#64748B] flex justify-between items-center font-bold">
+            <a href="/dashboard" className="hover:text-[#0F172A] flex items-center gap-1 transition-colors !no-underline hover:!no-underline">
               <ArrowLeft className="w-3.5 h-3.5" /> Student Catalog
             </a>
             <span className="text-green-600 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 block" /> DB Synced</span>
@@ -640,22 +640,22 @@ export function AdminDashboard({
         </aside>
 
         {/* RIGHT COLUMN: Parameters Form Workspace */}
-        <main className="flex-1 flex flex-col h-full bg-[#F5EFFF]/10 overflow-hidden relative">
+        <main className="flex-1 flex flex-col h-full bg-[#F8FAFC]/10 overflow-hidden relative">
           {activeCourse ? (
             <div className="flex-1 flex flex-col h-full overflow-hidden">
               
               {/* Active course header */}
-              <div className="px-6 py-4 border-b border-[#E2D5F8]/30 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white z-10 shadow-sm text-left">
+              <div className="px-6 py-4 border-b border-[#E2E8F0]/30 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white z-10 shadow-sm text-left">
                 <div className="space-y-0.5">
-                  <span className="text-[10px] font-black text-[#645A95] uppercase tracking-wider block">Currently Editing Track</span>
-                  <h1 className="text-sm font-black text-[#0B012C] truncate max-w-lg">{activeCourse.title}</h1>
+                  <span className="text-[10px] font-black text-[#64748B] uppercase tracking-wider block">Currently Editing Track</span>
+                  <h1 className="text-sm font-black text-[#0F172A] truncate max-w-lg">{activeCourse.title}</h1>
                 </div>
 
                 <div className="flex items-center gap-3">
                   {statusMessage && (
                     <span className={`text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1.5 border ${
                       statusMessage.type === "success" 
-                        ? "bg-[#D9F99D]/30 text-green-800 border-green-200" 
+                        ? "bg-[#EEF2FF]/30 text-green-800 border-green-200" 
                         : "bg-red-50 text-red-700 border-red-200"
                     }`}>
                       {statusMessage.type === "success" ? <CheckCircle2 className="w-3.5 h-3.5" /> : null}
@@ -674,13 +674,13 @@ export function AdminDashboard({
               </div>
 
               {/* Dynamic Tab Toggle Button Pill row */}
-              <div className="px-6 py-3.5 border-b border-[#E2D5F8]/30 bg-white flex gap-4 text-xs select-none">
+              <div className="px-6 py-3.5 border-b border-[#E2E8F0]/30 bg-white flex gap-4 text-xs select-none">
                 <button 
                   onClick={() => setActiveTab("info")}
                   className={`px-4 py-2 text-xs font-black rounded-full transition-all border cursor-pointer ${
                     activeTab === "info" 
-                      ? "bg-[#0B012C] text-white border-[#0B012C] shadow-md" 
-                      : "bg-[#FAFAFA]/50 border-[#E2D5F8]/60 text-[#645A95] hover:text-[#0B012C] hover:bg-slate-50"
+                      ? "bg-[#0F172A] text-white border-[#0F172A] shadow-md" 
+                      : "bg-[#FAFAFA]/50 border-[#E2E8F0]/60 text-[#64748B] hover:text-[#0F172A] hover:bg-slate-50"
                   }`}
                 >
                   1. Track Specifications
@@ -689,8 +689,8 @@ export function AdminDashboard({
                   onClick={() => setActiveTab("syllabus")}
                   className={`px-4 py-2 text-xs font-black rounded-full transition-all border cursor-pointer ${
                     activeTab === "syllabus" 
-                      ? "bg-[#0B012C] text-white border-[#0B012C] shadow-md" 
-                      : "bg-[#FAFAFA]/50 border-[#E2D5F8]/60 text-[#645A95] hover:text-[#0B012C] hover:bg-slate-50"
+                      ? "bg-[#0F172A] text-white border-[#0F172A] shadow-md" 
+                      : "bg-[#FAFAFA]/50 border-[#E2E8F0]/60 text-[#64748B] hover:text-[#0F172A] hover:bg-slate-50"
                   }`}
                 >
                   2. Syllabus Metadata
@@ -699,8 +699,8 @@ export function AdminDashboard({
                   onClick={() => setActiveTab("curriculum")}
                   className={`px-4 py-2 text-xs font-black rounded-full transition-all border cursor-pointer ${
                     activeTab === "curriculum" 
-                      ? "bg-[#0B012C] text-white border-[#0B012C] shadow-md" 
-                      : "bg-[#FAFAFA]/50 border-[#E2D5F8]/60 text-[#645A95] hover:text-[#0B012C] hover:bg-slate-50"
+                      ? "bg-[#0F172A] text-white border-[#0F172A] shadow-md" 
+                      : "bg-[#FAFAFA]/50 border-[#E2E8F0]/60 text-[#64748B] hover:text-[#0F172A] hover:bg-slate-50"
                   }`}
                 >
                   3. Curriculum Builder ({activeCourse.modules.length} Modules)
@@ -713,72 +713,72 @@ export function AdminDashboard({
                 {/* TAB 1: Specifications Input form */}
                 {activeTab === "info" && (
                   <div className="p-6 overflow-y-auto h-full space-y-6 max-w-4xl text-left">
-                    <div className="bg-white border border-[#E2D5F8]/40 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
-                      <h2 className="text-xs font-black uppercase text-[#645A95] tracking-wider mb-2 flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-[#0B012C]" /> Define Primary Track Scope
+                    <div className="bg-white border border-[#E2E8F0]/40 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
+                      <h2 className="text-xs font-black uppercase text-[#64748B] tracking-wider mb-2 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-[#0F172A]" /> Define Primary Track Scope
                       </h2>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Course Title</label>
+                          <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Course Title</label>
                           <input 
                             type="text" 
                             value={courseForm.title}
                             onChange={(e) => setCourseForm({ ...courseForm, title: e.target.value })}
-                            className="w-full text-xs border border-[#E2D5F8]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                            className="w-full text-xs border border-[#E2E8F0]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
                             placeholder="e.g. Enterprise Web Architecture"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Partner Organization</label>
+                          <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Partner Organization</label>
                           <input 
                             type="text" 
                             value={courseForm.organization}
                             onChange={(e) => setCourseForm({ ...courseForm, organization: e.target.value })}
-                            className="w-full text-xs border border-[#E2D5F8]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                            className="w-full text-xs border border-[#E2E8F0]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
                             placeholder="e.g. Vercel, Stanford, Iceberg"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Lead Instructor</label>
+                          <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Lead Instructor</label>
                           <input 
                             type="text" 
                             value={courseForm.instructor}
                             onChange={(e) => setCourseForm({ ...courseForm, instructor: e.target.value })}
-                            className="w-full text-xs border border-[#E2D5F8]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                            className="w-full text-xs border border-[#E2E8F0]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
                             placeholder="e.g. Elizabeth Allison"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Estimated Duration</label>
+                          <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Estimated Duration</label>
                           <input 
                             type="text" 
                             value={courseForm.duration}
                             onChange={(e) => setCourseForm({ ...courseForm, duration: e.target.value })}
-                            className="w-full text-xs border border-[#E2D5F8]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                            className="w-full text-xs border border-[#E2E8F0]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
                             placeholder="e.g. 12 hours"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Thumbnail Image URL</label>
+                          <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Thumbnail Image URL</label>
                           <input 
                             type="text" 
                             value={courseForm.thumbnail}
                             onChange={(e) => setCourseForm({ ...courseForm, thumbnail: e.target.value })}
-                            className="w-full text-xs border border-[#E2D5F8]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                            className="w-full text-xs border border-[#E2E8F0]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
                             placeholder="Unsplash image or static asset url"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Difficulty Level</label>
+                          <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Difficulty Level</label>
                           <select 
                             value={courseForm.difficulty}
                             onChange={(e) => setCourseForm({ ...courseForm, difficulty: e.target.value })}
-                            className="w-full text-xs border border-[#E2D5F8]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C] h-[46px]"
+                            className="w-full text-xs border border-[#E2E8F0]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A] h-[46px]"
                           >
                             <option value="Beginner">Beginner</option>
                             <option value="Intermediate">Intermediate</option>
@@ -788,27 +788,27 @@ export function AdminDashboard({
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Course Overview / Description</label>
+                        <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Course Overview / Description</label>
                         <textarea 
                           rows={4}
                           value={courseForm.description}
                           onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
-                          className="w-full text-xs border border-[#E2D5F8]/60 p-4 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C] leading-relaxed"
+                          className="w-full text-xs border border-[#E2E8F0]/60 p-4 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A] leading-relaxed"
                           placeholder="Write a concise overview outlining what learners will build and master."
                         />
                       </div>
 
-                      <div className="flex items-center gap-4 pt-4 border-t border-[#E2D5F8]/20">
+                      <div className="flex items-center gap-4 pt-4 border-t border-[#E2E8F0]/20">
                         <button 
                           onClick={handleSaveCourse}
                           disabled={loading}
-                          className="px-5 py-2.5 bg-[#0B012C] hover:bg-[#0B012C]/90 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md disabled:opacity-50 cursor-pointer transition-transform active:scale-98"
+                          className="px-5 py-2.5 bg-[#0F172A] hover:bg-[#0F172A]/90 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md disabled:opacity-50 cursor-pointer transition-transform active:scale-98"
                         >
                           {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
                           Save Specifications
                         </button>
                         {courseForm.thumbnail && (
-                          <div className="w-20 aspect-video rounded-xl border border-[#E2D5F8]/40 overflow-hidden bg-slate-100 shrink-0">
+                          <div className="w-20 aspect-video rounded-xl border border-[#E2E8F0]/40 overflow-hidden bg-slate-100 shrink-0">
                             <img src={courseForm.thumbnail} alt="preview" className="object-cover w-full h-full" />
                           </div>
                         )}
@@ -820,58 +820,58 @@ export function AdminDashboard({
                 {/* TAB 2: Syllabus Metadata */}
                 {activeTab === "syllabus" && (
                   <div className="p-6 overflow-y-auto h-full space-y-6 max-w-4xl text-left">
-                    <div className="bg-white border border-[#E2D5F8]/40 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
-                      <h2 className="text-xs font-black uppercase text-[#645A95] tracking-wider mb-2 flex items-center gap-1.5">
-                        <FileText className="w-3.5 h-3.5 text-[#0B012C]" /> Curriculum Requirements & Outlines
+                    <div className="bg-white border border-[#E2E8F0]/40 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
+                      <h2 className="text-xs font-black uppercase text-[#64748B] tracking-wider mb-2 flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5 text-[#0F172A]" /> Curriculum Requirements & Outlines
                       </h2>
                       
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block flex items-center gap-1">
-                          <Sparkles className="w-3.5 h-3.5 text-[#0B012C]" /> Skills Acquired
+                        <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block flex items-center gap-1">
+                          <Sparkles className="w-3.5 h-3.5 text-[#0F172A]" /> Skills Acquired
                         </label>
-                        <p className="text-[9px] text-[#645A95] font-semibold -mt-1">Enter key technical skills, separated by commas.</p>
+                        <p className="text-[9px] text-[#64748B] font-semibold -mt-1">Enter key technical skills, separated by commas.</p>
                         <input 
                           type="text" 
                           value={courseForm.skills}
                           onChange={(e) => setCourseForm({ ...courseForm, skills: e.target.value })}
-                          className="w-full text-xs border border-[#E2D5F8]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C]"
+                          className="w-full text-xs border border-[#E2E8F0]/60 pl-4 pr-4 py-3 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A]"
                           placeholder="e.g. Next.js, Server Components, TypeScript, Server Actions"
                         />
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block flex items-center gap-1">
-                          <FileText className="w-3.5 h-3.5 text-[#0B012C]" /> Learning Outcomes
+                        <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block flex items-center gap-1">
+                          <FileText className="w-3.5 h-3.5 text-[#0F172A]" /> Learning Outcomes
                         </label>
-                        <p className="text-[9px] text-[#645A95] font-semibold -mt-1">What will students be able to do? Enter separate items separated by a pipe (<code>|</code>).</p>
+                        <p className="text-[9px] text-[#64748B] font-semibold -mt-1">What will students be able to do? Enter separate items separated by a pipe (<code>|</code>).</p>
                         <textarea 
                           rows={4}
                           value={courseForm.outcomes}
                           onChange={(e) => setCourseForm({ ...courseForm, outcomes: e.target.value })}
-                          className="w-full text-xs border border-[#E2D5F8]/60 p-4 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C] leading-relaxed font-mono"
+                          className="w-full text-xs border border-[#E2E8F0]/60 p-4 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A] leading-relaxed font-mono"
                           placeholder="Master state management with React Server Actions | Optimize caching parameters natively"
                         />
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block flex items-center gap-1">
-                          <HelpCircle className="w-3.5 h-3.5 text-[#0B012C]" /> Frequently Asked Questions (FAQ)
+                        <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block flex items-center gap-1">
+                          <HelpCircle className="w-3.5 h-3.5 text-[#0F172A]" /> Frequently Asked Questions (FAQ)
                         </label>
-                        <p className="text-[9px] text-[#645A95] font-semibold -mt-1">Structure each item as <code>Question - Answer</code> and separate individual FAQs with a pipe (<code>|</code>).</p>
+                        <p className="text-[9px] text-[#64748B] font-semibold -mt-1">Structure each item as <code>Question - Answer</code> and separate individual FAQs with a pipe (<code>|</code>).</p>
                         <textarea 
                           rows={5}
                           value={courseForm.faqs}
                           onChange={(e) => setCourseForm({ ...courseForm, faqs: e.target.value })}
-                          className="w-full text-xs border border-[#E2D5F8]/60 p-4 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C]/60 focus:bg-white transition-all font-semibold text-[#0B012C] leading-relaxed font-mono"
+                          className="w-full text-xs border border-[#E2E8F0]/60 p-4 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A]/60 focus:bg-white transition-all font-semibold text-[#0F172A] leading-relaxed font-mono"
                           placeholder="Is this self-paced? - Yes, you can complete all assignments anytime. | Do I get a certificate? - Yes, completing all checks awards a certificate."
                         />
                       </div>
 
-                      <div className="pt-4 border-t border-[#E2D5F8]/20">
+                      <div className="pt-4 border-t border-[#E2E8F0]/20">
                         <button 
                           onClick={handleSaveCourse}
                           disabled={loading}
-                          className="px-5 py-2.5 bg-[#0B012C] hover:bg-[#0B012C]/90 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md disabled:opacity-50 cursor-pointer"
+                          className="px-5 py-2.5 bg-[#0F172A] hover:bg-[#0F172A]/90 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md disabled:opacity-50 cursor-pointer"
                         >
                           {loading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
                           Save Syllabus Metadata
@@ -886,16 +886,16 @@ export function AdminDashboard({
                   <div className="flex h-full overflow-hidden select-none p-5 gap-5">
                     
                     {/* COLUMN 1: Modules list (lavender container) */}
-                    <div className="w-72 flex-shrink-0 flex flex-col h-full bg-white border border-[#E2D5F8]/40 rounded-3xl p-4 shadow-sm text-left">
-                      <div className="pb-3 border-b border-[#E2D5F8]/30 flex items-center justify-between">
+                    <div className="w-72 flex-shrink-0 flex flex-col h-full bg-white border border-[#E2E8F0]/40 rounded-3xl p-4 shadow-sm text-left">
+                      <div className="pb-3 border-b border-[#E2E8F0]/30 flex items-center justify-between">
                         <div className="min-w-0">
-                          <span className="text-[8px] font-black uppercase text-[#645A95] tracking-wider block">Course Units</span>
-                          <span className="text-xs font-black text-[#0B012C] block mt-0.5">Modular Steps</span>
+                          <span className="text-[8px] font-black uppercase text-[#64748B] tracking-wider block">Course Units</span>
+                          <span className="text-xs font-black text-[#0F172A] block mt-0.5">Modular Steps</span>
                         </div>
                         <button 
                           onClick={handleCreateModule}
                           disabled={loading}
-                          className="p-1.5 rounded-xl bg-[#F5EFFF] text-[#0B012C] hover:bg-[#FEF08A] transition-all cursor-pointer shadow-sm border border-[#E2D5F8]/50 shrink-0"
+                          className="p-1.5 rounded-xl bg-[#F8FAFC] text-[#0F172A] hover:bg-[#EEF2FF] transition-all cursor-pointer shadow-sm border border-[#E2E8F0]/50 shrink-0"
                           title="Create New Module"
                         >
                           <Plus className="w-4 h-4" />
@@ -919,22 +919,22 @@ export function AdminDashboard({
                               }}
                               className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between ${
                                 isSel 
-                                  ? "bg-[#F5EFFF]/35 border-[#0B012C] font-extrabold shadow-inner" 
+                                  ? "bg-[#F8FAFC]/35 border-[#0F172A] font-extrabold shadow-inner" 
                                   : "border-transparent hover:bg-[#FAFAFA]/70"
                               }`}
                             >
                               <div className="min-w-0 flex-1 pr-1.5">
-                                <span className="text-[8px] font-black block text-[#645A95] uppercase">Module {mod.order}</span>
-                                <span className={`text-[11px] leading-snug font-bold block truncate mt-0.5 ${isSel ? "text-[#0B012C]" : "text-[#645A95]"}`}>
+                                <span className="text-[8px] font-black block text-[#64748B] uppercase">Module {mod.order}</span>
+                                <span className={`text-[11px] leading-snug font-bold block truncate mt-0.5 ${isSel ? "text-[#0F172A]" : "text-[#64748B]"}`}>
                                   {mod.title}
                                 </span>
                               </div>
-                              <ChevronRight className={`w-3.5 h-3.5 transition-transform text-slate-300 flex-shrink-0 ${isSel ? "translate-x-0.5 text-[#0B012C]" : ""}`} />
+                              <ChevronRight className={`w-3.5 h-3.5 transition-transform text-slate-300 flex-shrink-0 ${isSel ? "translate-x-0.5 text-[#0F172A]" : ""}`} />
                             </div>
                           );
                         })}
                         {activeCourse.modules.length === 0 && (
-                          <div className="p-4 text-center text-xs text-[#645A95] font-semibold italic">
+                          <div className="p-4 text-center text-xs text-[#64748B] font-semibold italic">
                             No modules yet. Click + to add.
                           </div>
                         )}
@@ -942,13 +942,13 @@ export function AdminDashboard({
                     </div>
 
                     {/* COLUMN 2: Active Module details & activities (lavender container) */}
-                    <div className="w-80 flex-shrink-0 flex flex-col h-full bg-white border border-[#E2D5F8]/40 rounded-3xl p-4 shadow-sm text-left">
+                    <div className="w-80 flex-shrink-0 flex flex-col h-full bg-white border border-[#E2E8F0]/40 rounded-3xl p-4 shadow-sm text-left">
                       {activeModule ? (
                         <div className="flex-1 flex flex-col h-full overflow-hidden">
                           {/* Module Parameters Editor block */}
-                          <div className="pb-3 border-b border-[#E2D5F8]/30 space-y-2.5 bg-[#FAFAFA]/50 p-2.5 rounded-2xl border border-[#E2D5F8]/20">
+                          <div className="pb-3 border-b border-[#E2E8F0]/30 space-y-2.5 bg-[#FAFAFA]/50 p-2.5 rounded-2xl border border-[#E2E8F0]/20">
                             <div className="flex items-center justify-between">
-                              <span className="text-[9px] font-black uppercase text-[#645A95] tracking-wider">Module Parameters</span>
+                              <span className="text-[9px] font-black uppercase text-[#64748B] tracking-wider">Module Parameters</span>
                               <button
                                 onClick={handleDeleteModule}
                                 className="text-[9px] text-red-600 font-bold hover:underline cursor-pointer"
@@ -961,19 +961,19 @@ export function AdminDashboard({
                                 type="text"
                                 value={moduleForm.title}
                                 onChange={(e) => setModuleForm({ ...moduleForm, title: e.target.value })}
-                                className="w-full text-xs border border-[#E2D5F8]/50 px-3 py-2 rounded-xl bg-white focus:outline-none focus:border-[#0B012C] font-semibold text-[#0B012C]"
+                                className="w-full text-xs border border-[#E2E8F0]/50 px-3 py-2 rounded-xl bg-white focus:outline-none focus:border-[#0F172A] font-semibold text-[#0F172A]"
                                 placeholder="Module Title"
                               />
                               <textarea 
                                 rows={2}
                                 value={moduleForm.description}
                                 onChange={(e) => setModuleForm({ ...moduleForm, description: e.target.value })}
-                                className="w-full text-[10px] border border-[#E2D5F8]/50 p-2 rounded-xl bg-white focus:outline-none focus:border-[#0B012C] leading-relaxed font-semibold text-[#645A95]"
+                                className="w-full text-[10px] border border-[#E2E8F0]/50 p-2 rounded-xl bg-white focus:outline-none focus:border-[#0F172A] leading-relaxed font-semibold text-[#64748B]"
                                 placeholder="Describe this milestone segment..."
                               />
                               <div className="flex justify-between items-center pt-1">
                                 <div className="flex items-center space-x-1">
-                                  <span className="text-[9px] text-[#645A95] font-bold">Order:</span>
+                                  <span className="text-[9px] text-[#64748B] font-bold">Order:</span>
                                   <input 
                                     type="number"
                                     value={moduleForm.order}
@@ -983,7 +983,7 @@ export function AdminDashboard({
                                 </div>
                                 <button
                                   onClick={handleSaveModule}
-                                  className="px-3 py-1.5 bg-[#0B012C] text-white text-[9.5px] font-black rounded-lg shadow-sm hover:bg-[#0B012C]/90 cursor-pointer"
+                                  className="px-3 py-1.5 bg-[#0F172A] text-white text-[9.5px] font-black rounded-lg shadow-sm hover:bg-[#0F172A]/90 cursor-pointer"
                                 >
                                   Update Module
                                 </button>
@@ -992,8 +992,8 @@ export function AdminDashboard({
                           </div>
 
                           {/* Activities list listbox */}
-                          <div className="py-2.5 border-b border-[#E2D5F8]/20 flex items-center justify-between select-none mt-2">
-                            <span className="text-[9px] font-black text-[#645A95] uppercase">Activities ({activeModule.activities.length})</span>
+                          <div className="py-2.5 border-b border-[#E2E8F0]/20 flex items-center justify-between select-none mt-2">
+                            <span className="text-[9px] font-black text-[#64748B] uppercase">Activities ({activeModule.activities.length})</span>
                             
                             <select 
                               onChange={(e) => {
@@ -1002,7 +1002,7 @@ export function AdminDashboard({
                                   e.target.value = "";
                                 }
                               }}
-                              className="text-[9px] font-black border border-[#E2D5F8] bg-white px-2 py-1 rounded-lg text-[#0B012C] focus:outline-none cursor-pointer hover:bg-slate-50 shadow-sm"
+                              className="text-[9px] font-black border border-[#E2E8F0] bg-white px-2 py-1 rounded-lg text-[#0F172A] focus:outline-none cursor-pointer hover:bg-slate-50 shadow-sm"
                             >
                               <option value="">+ Add Activity</option>
                               <option value={ActivityType.VIDEO}>Video Lecture</option>
@@ -1023,7 +1023,7 @@ export function AdminDashboard({
                                   onClick={() => setActiveActivityId(act.id)}
                                   className={`p-2.5 rounded-2xl border text-left cursor-pointer flex items-center justify-between transition-all ${
                                     isSelAct 
-                                      ? "bg-[#F5EFFF]/35 border-[#0B012C] shadow-inner" 
+                                      ? "bg-[#F8FAFC]/35 border-[#0F172A] shadow-inner" 
                                       : "border-transparent hover:bg-[#FAFAFA]/70"
                                   }`}
                                 >
@@ -1032,38 +1032,38 @@ export function AdminDashboard({
                                       {typeConf.icon}
                                     </div>
                                     <div className="min-w-0">
-                                      <span className="text-[8px] text-[#645A95] block font-extrabold">Unit {index + 1} • {act.type.replace("_", " ")}</span>
-                                      <span className={`text-[11px] leading-snug block truncate font-bold ${isSelAct ? "text-[#0B012C]" : "text-[#645A95]"}`}>
+                                      <span className="text-[8px] text-[#64748B] block font-extrabold">Unit {index + 1} • {act.type.replace("_", " ")}</span>
+                                      <span className={`text-[11px] leading-snug block truncate font-bold ${isSelAct ? "text-[#0F172A]" : "text-[#64748B]"}`}>
                                         {act.title}
                                       </span>
                                     </div>
                                   </div>
-                                  <ChevronRight className={`w-3.5 h-3.5 text-slate-300 ${isSelAct ? "text-[#0B012C]" : ""}`} />
+                                  <ChevronRight className={`w-3.5 h-3.5 text-slate-300 ${isSelAct ? "text-[#0F172A]" : ""}`} />
                                 </div>
                               );
                             })}
                             {activeModule.activities.length === 0 && (
-                              <div className="p-6 text-center text-xs text-[#645A95] font-semibold italic bg-slate-50 rounded-2xl mt-4">
+                              <div className="p-6 text-center text-xs text-[#64748B] font-semibold italic bg-slate-50 rounded-2xl mt-4">
                                 Choose an Activity Type above to spawn the first module unit!
                               </div>
                             )}
                           </div>
                         </div>
                       ) : (
-                        <div className="p-10 text-center text-xs text-[#645A95] font-semibold italic h-full flex flex-col items-center justify-center">
+                        <div className="p-10 text-center text-xs text-[#64748B] font-semibold italic h-full flex flex-col items-center justify-center">
                           Select a course module on the left to review its lessons and activities list.
                         </div>
                       )}
                     </div>
 
                     {/* COLUMN 3: Active Activity Details & parameters config workspace */}
-                    <div className="flex-1 flex flex-col h-full bg-white border border-[#E2D5F8]/40 rounded-3xl p-4 shadow-sm text-left overflow-hidden">
+                    <div className="flex-1 flex flex-col h-full bg-white border border-[#E2E8F0]/40 rounded-3xl p-4 shadow-sm text-left overflow-hidden">
                       {activeActivity ? (
                         <div className="flex-1 flex flex-col h-full overflow-hidden">
                           
                           {/* Parameter Action Header */}
-                          <div className="pb-3 border-b border-[#E2D5F8]/30 flex items-center justify-between flex-shrink-0">
-                            <span className="text-[9px] font-black text-[#645A95] uppercase tracking-wider">Unit Parameters Configuration</span>
+                          <div className="pb-3 border-b border-[#E2E8F0]/30 flex items-center justify-between flex-shrink-0">
+                            <span className="text-[9px] font-black text-[#64748B] uppercase tracking-wider">Unit Parameters Configuration</span>
                             <div className="flex items-center gap-3">
                               <button
                                 onClick={handleDeleteActivity}
@@ -1073,7 +1073,7 @@ export function AdminDashboard({
                               </button>
                               <button
                                 onClick={handleSaveActivity}
-                                className="px-3.5 py-1.5 bg-[#0B012C] hover:bg-[#0B012C]/90 text-white text-[10px] font-black rounded-xl shadow-sm flex items-center gap-1 cursor-pointer transition-transform active:scale-98"
+                                className="px-3.5 py-1.5 bg-[#0F172A] hover:bg-[#0F172A]/90 text-white text-[10px] font-black rounded-xl shadow-sm flex items-center gap-1 cursor-pointer transition-transform active:scale-98"
                               >
                                 <Save className="w-3 h-3" /> Save Parameters
                               </button>
@@ -1084,22 +1084,22 @@ export function AdminDashboard({
                           <div className="flex-1 overflow-y-auto pt-4 space-y-4 text-left scrollbar-thin scrollbar-thumb-slate-200 pr-1">
                             <div className="grid grid-cols-2 gap-4">
                               <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Activity Title</label>
+                                <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Activity Title</label>
                                 <input 
                                   type="text"
                                   value={activityForm.title}
                                   onChange={(e) => setActivityForm({ ...activityForm, title: e.target.value })}
-                                  className="w-full text-xs border border-[#E2D5F8]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C] font-semibold text-[#0B012C]"
+                                  className="w-full text-xs border border-[#E2E8F0]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A] font-semibold text-[#0F172A]"
                                   placeholder="Activity Title"
                                 />
                               </div>
                               <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Expected Duration</label>
+                                <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Expected Duration</label>
                                 <input 
                                   type="text"
                                   value={activityForm.duration}
                                   onChange={(e) => setActivityForm({ ...activityForm, duration: e.target.value })}
-                                  className="w-full text-xs border border-[#E2D5F8]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C] font-semibold text-[#0B012C]"
+                                  className="w-full text-xs border border-[#E2E8F0]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A] font-semibold text-[#0F172A]"
                                   placeholder="e.g. 10 mins"
                                 />
                               </div>
@@ -1107,11 +1107,11 @@ export function AdminDashboard({
 
                             <div className="grid grid-cols-2 gap-4">
                               <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Category Type</label>
+                                <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Category Type</label>
                                 <select 
                                   value={activityForm.type}
                                   onChange={(e) => setActivityForm({ ...activityForm, type: e.target.value as ActivityType })}
-                                  className="w-full text-xs border border-[#E2D5F8]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C] font-semibold text-[#0B012C] h-[35px]"
+                                  className="w-full text-xs border border-[#E2E8F0]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A] font-semibold text-[#0F172A] h-[35px]"
                                 >
                                   <option value={ActivityType.VIDEO}>Video Lecture</option>
                                   <option value={ActivityType.READING}>Technical Reading</option>
@@ -1121,12 +1121,12 @@ export function AdminDashboard({
                                 </select>
                               </div>
                               <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block">Order rank</label>
+                                <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block">Order rank</label>
                                 <input 
                                   type="number"
                                   value={activityForm.order}
                                   onChange={(e) => setActivityForm({ ...activityForm, order: parseInt(e.target.value) || 1 })}
-                                  className="w-full text-xs border border-[#E2D5F8]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C] font-semibold text-[#0B012C]"
+                                  className="w-full text-xs border border-[#E2E8F0]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A] font-semibold text-[#0F172A]"
                                 />
                               </div>
                             </div>
@@ -1134,42 +1134,42 @@ export function AdminDashboard({
                             {/* Only a VIDEO activity has anywhere to put this. */}
                             {activityForm.type === ActivityType.VIDEO && (
                               <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block flex items-center gap-1">
-                                  <Video className="w-3.5 h-3.5 text-[#0B012C]" /> YouTube Video URL
+                                <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block flex items-center gap-1">
+                                  <Video className="w-3.5 h-3.5 text-[#0F172A]" /> YouTube Video URL
                                 </label>
-                                <p className="text-[9px] text-[#645A95] font-semibold -mt-1">
+                                <p className="text-[9px] text-[#64748B] font-semibold -mt-1">
                                   Paste a normal YouTube link — watch, share, embed or shorts all work.
                                 </p>
                                 <input
                                   type="url"
                                   value={activityForm.videoUrl}
                                   onChange={(e) => setActivityForm({ ...activityForm, videoUrl: e.target.value })}
-                                  className="w-full text-xs border border-[#E2D5F8]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C] font-semibold text-[#0B012C] font-mono"
+                                  className="w-full text-xs border border-[#E2E8F0]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A] font-semibold text-[#0F172A] font-mono"
                                   placeholder="https://www.youtube.com/watch?v=..."
                                 />
                               </div>
                             )}
 
                             <div className="space-y-1.5">
-                              <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block flex items-center gap-1">
-                                <FileText className="w-3.5 h-3.5 text-[#0B012C]" /> Dynamic Resource Downloads
+                              <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block flex items-center gap-1">
+                                <FileText className="w-3.5 h-3.5 text-[#0F172A]" /> Dynamic Resource Downloads
                               </label>
-                              <p className="text-[9px] text-[#645A95] font-semibold -mt-1">Enter download guides in standard format: <code>Title - Link | Title2 - Link2</code></p>
+                              <p className="text-[9px] text-[#64748B] font-semibold -mt-1">Enter download guides in standard format: <code>Title - Link | Title2 - Link2</code></p>
                               <input 
                                 type="text"
                                 value={activityForm.resources}
                                 onChange={(e) => setActivityForm({ ...activityForm, resources: e.target.value })}
-                                className="w-full text-xs border border-[#E2D5F8]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0B012C] font-semibold text-[#0B012C] font-mono"
+                                className="w-full text-xs border border-[#E2E8F0]/50 px-3 py-2 rounded-xl bg-slate-50 focus:outline-none focus:border-[#0F172A] font-semibold text-[#0F172A] font-mono"
                                 placeholder="e.g. Whispers Master Document - /files/doc.pdf"
                               />
                             </div>
 
                             {/* Workspace Content configuration panel with matching instructions */}
                             <div className="flex-1 flex flex-col space-y-2 min-h-[300px]">
-                              <label className="text-[10px] font-bold text-[#0B012C] uppercase tracking-wider block flex items-center gap-1">
-                                <Sparkles className="w-3.5 h-3.5 text-[#0B012C]" /> Workspace Content Configuration
+                              <label className="text-[10px] font-bold text-[#0F172A] uppercase tracking-wider block flex items-center gap-1">
+                                <Sparkles className="w-3.5 h-3.5 text-[#0F172A]" /> Workspace Content Configuration
                               </label>
-                              <span className="text-[9.5px] text-[#645A95] font-semibold block -mt-1 bg-[#F5EFFF]/35 p-3 rounded-2xl border border-[#E2D5F8]/30">
+                              <span className="text-[9.5px] text-[#64748B] font-semibold block -mt-1 bg-[#F8FAFC]/35 p-3 rounded-2xl border border-[#E2E8F0]/30">
                                 {activityForm.type === ActivityType.VIDEO && (
                                   <span><strong>Video Transcripts:</strong> Enter rich lecture notes or transcripts using HTML tags (e.g. <code>&lt;h2&gt;, &lt;p&gt;, &lt;pre&gt;&lt;code&gt;</code>).</span>
                                 )}
@@ -1186,17 +1186,17 @@ export function AdminDashboard({
                               <textarea 
                                 value={activityForm.content}
                                 onChange={(e) => setActivityForm({ ...activityForm, content: e.target.value })}
-                                className="flex-1 w-full text-xs border border-[#E2D5F8]/50 p-4 rounded-2xl bg-slate-50 focus:outline-none focus:border-[#0B012C] font-mono leading-relaxed h-[360px] resize-y font-semibold text-[#0B012C]"
+                                className="flex-1 w-full text-xs border border-[#E2E8F0]/50 p-4 rounded-2xl bg-slate-50 focus:outline-none focus:border-[#0F172A] font-mono leading-relaxed h-[360px] resize-y font-semibold text-[#0F172A]"
                                 placeholder="Enter dynamic notes, guides, or structured JSON arrays depending on activity type..."
                               />
                             </div>
                           </div>
                         </div>
                       ) : (
-                        <div className="p-10 text-center text-xs text-[#645A95] font-semibold italic h-full flex flex-col items-center justify-center">
+                        <div className="p-10 text-center text-xs text-[#64748B] font-semibold italic h-full flex flex-col items-center justify-center">
                           <HelpCircle className="w-10 h-10 text-slate-300 mb-3" />
-                          <h4 className="font-extrabold text-xs text-[#0B012C]">No Selected Activity</h4>
-                          <p className="text-[9.5px] text-[#645A95] mt-1">Click "Add Activity" inside the center panel or select an existing unit item to begin parameter configurations.</p>
+                          <h4 className="font-extrabold text-xs text-[#0F172A]">No Selected Activity</h4>
+                          <p className="text-[9.5px] text-[#64748B] mt-1">Click "Add Activity" inside the center panel or select an existing unit item to begin parameter configurations.</p>
                         </div>
                       )}
                     </div>
@@ -1208,12 +1208,12 @@ export function AdminDashboard({
           ) : (
             <div className="flex flex-col items-center justify-center p-20 text-center h-full text-slate-400 select-none">
               <Globe className="w-12 h-12 text-slate-300 mb-3" />
-              <h3 className="font-extrabold text-sm text-[#0B012C]">Curriculum Directory Empty</h3>
-              <p className="text-xs text-[#645A95] font-semibold mt-1">Create a new course curriculum to populate the platform's active database directory.</p>
+              <h3 className="font-extrabold text-sm text-[#0F172A]">Curriculum Directory Empty</h3>
+              <p className="text-xs text-[#64748B] font-semibold mt-1">Create a new course curriculum to populate the platform's active database directory.</p>
               <button 
                 onClick={handleCreateCourse}
                 disabled={loading}
-                className="mt-4 px-5 py-2.5 bg-[#0B012C] hover:bg-[#0B012C]/90 text-white rounded-xl text-xs font-bold flex items-center gap-1 shadow-md disabled:opacity-50 cursor-pointer"
+                className="mt-4 px-5 py-2.5 bg-[#0F172A] hover:bg-[#0F172A]/90 text-white rounded-xl text-xs font-bold flex items-center gap-1 shadow-md disabled:opacity-50 cursor-pointer"
               >
                 <Plus className="w-4 h-4" /> Create First Course
               </button>

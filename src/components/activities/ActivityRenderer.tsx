@@ -51,7 +51,7 @@ export function ActivityRenderer({ activity }: { activity: RenderableActivity })
 
     default:
       return (
-        <div className="p-6 border border-dashed border-[#E2D5F8] rounded-2xl text-center text-xs text-[#645A95] font-semibold">
+        <div className="p-6 border border-dashed border-[#E2E8F0] rounded-2xl text-center text-xs text-[#64748B] font-semibold">
           This activity type can&apos;t be displayed yet.
         </div>
       );

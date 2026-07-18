@@ -41,19 +41,19 @@ function LoginForm() {
     <div className="w-full h-screen">
       <div className="bg-white overflow-hidden grid grid-cols-1 lg:grid-cols-2 h-full">
         {/* LEFT: the form, on a warm gradient */}
-        <div className="relative bg-gradient-to-b from-white via-white to-[#FEF08A]/40 p-8 md:p-12 flex flex-col overflow-y-auto">
+        <div className="relative bg-white p-8 md:p-12 flex flex-col overflow-y-auto">
           {/* Brand pill */}
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 self-start border border-[#0B012C]/15 rounded-full px-4 py-2 text-sm font-black tracking-tight text-[#0B012C] hover:border-[#0B012C]/40 transition-colors !no-underline hover:!no-underline"
+            className="inline-flex items-center gap-1.5 self-start border border-[#0F172A]/15 rounded-full px-4 py-2 text-sm font-black tracking-tight text-[#0F172A] hover:border-[#0F172A]/40 transition-colors !no-underline hover:!no-underline"
           >
 <Logo markClassName="w-4 h-4" />
           </Link>
 
           <div className="flex-1 flex flex-col justify-center max-w-sm w-full mx-auto py-10">
             <div className="text-center space-y-1.5 mb-8">
-              <h1 className="text-3xl font-black text-[#0B012C] tracking-tight">Welcome back</h1>
-              <p className="text-xs text-[#645A95] font-semibold">
+              <h1 className="text-3xl font-black text-[#0F172A] tracking-tight">Welcome back</h1>
+              <p className="text-xs text-[#64748B] font-semibold">
                 Sign in to continue your learning.
               </p>
             </div>
@@ -66,7 +66,7 @@ function LoginForm() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1.5">
-                <label htmlFor="email" className="text-[11px] font-bold text-[#645A95] block pl-1">
+                <label htmlFor="email" className="text-[11px] font-bold text-[#64748B] block pl-1">
                   Email
                 </label>
                 <div className="relative">
@@ -79,13 +79,13 @@ function LoginForm() {
                     onChange={(e) => setEmail(e.target.value)}
                     autoComplete="email"
                     placeholder="you@company.com"
-                    className="w-full text-sm bg-white/70 border border-[#0B012C]/10 pl-11 pr-4 py-3.5 rounded-full focus:outline-none focus:border-[#0B012C]/30 focus:bg-white transition-all font-medium text-[#0B012C] placeholder:text-slate-400"
+                    className="w-full text-sm bg-white/70 border border-[#0F172A]/10 pl-11 pr-4 py-3.5 rounded-full focus:outline-none focus:border-[#0F172A]/30 focus:bg-white transition-all font-medium text-[#0F172A] placeholder:text-slate-400"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="password" className="text-[11px] font-bold text-[#645A95] block pl-1">
+                <label htmlFor="password" className="text-[11px] font-bold text-[#64748B] block pl-1">
                   Password
                 </label>
                 <div className="relative">
@@ -98,13 +98,13 @@ function LoginForm() {
                     onChange={(e) => setPassword(e.target.value)}
                     autoComplete="current-password"
                     placeholder="••••••••"
-                    className="w-full text-sm bg-white/70 border border-[#0B012C]/10 pl-11 pr-11 py-3.5 rounded-full focus:outline-none focus:border-[#0B012C]/30 focus:bg-white transition-all font-medium text-[#0B012C] placeholder:text-slate-400"
+                    className="w-full text-sm bg-white/70 border border-[#0F172A]/10 pl-11 pr-11 py-3.5 rounded-full focus:outline-none focus:border-[#0F172A]/30 focus:bg-white transition-all font-medium text-[#0F172A] placeholder:text-slate-400"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((v) => !v)}
                     aria-label={showPassword ? "Hide password" : "Show password"}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#0B012C] transition-colors cursor-pointer"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#0F172A] transition-colors cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -114,7 +114,7 @@ function LoginForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3.5 mt-2 bg-[#FEF08A] hover:bg-[#FDE047] text-[#0B012C] rounded-full text-sm font-bold transition-all shadow-sm active:scale-[0.98] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer select-none"
+                className="w-full py-3.5 mt-2 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-full text-sm font-bold transition-all shadow-sm active:scale-[0.98] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer select-none"
               >
                 {loading ? (
                   <>
@@ -128,7 +128,7 @@ function LoginForm() {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between text-[10px] font-semibold text-[#645A95] select-none">
+          <div className="flex items-center justify-between text-[10px] font-semibold text-[#64748B] select-none">
             <span>Accounts are created by your administrator.</span>
             <span>© 2026 Iceberg</span>
           </div>
@@ -136,13 +136,13 @@ function LoginForm() {
 
         {/* RIGHT: imagery. Hidden on small screens where the form is all that matters. */}
         <div className="relative hidden lg:block">
-          <div className="relative w-full h-full overflow-hidden bg-[#0B012C]">
+          <div className="relative w-full h-full overflow-hidden bg-[#0F172A]">
             <img
               src="/hero_student.png"
               alt="A learner working through a course"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B012C]/85 via-[#0B012C]/15 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-[#0F172A]/15 to-transparent" />
 
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white space-y-1.5">
               <h2 className="text-xl font-black tracking-tight leading-snug">
@@ -161,11 +161,11 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="fixed inset-0 bg-white selection:bg-[#FEF08A] selection:text-[#0B012C] font-sans">
+    <div className="fixed inset-0 bg-white selection:bg-[#EEF2FF] selection:text-[#0F172A] font-sans">
       <Suspense
         fallback={
           <div className="w-full h-full flex items-center justify-center">
-            <Loader2 className="w-5 h-5 animate-spin text-[#645A95]" />
+            <Loader2 className="w-5 h-5 animate-spin text-[#64748B]" />
           </div>
         }
       >

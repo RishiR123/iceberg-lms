@@ -42,45 +42,45 @@ export function Sidebar({ courseId, modules }: { courseId: string; modules: Modu
   // Helper to resolve custom icons based on ActivityType
   const getActivityIcon = (type: string, completed: boolean, isActive: boolean) => {
     if (completed) {
-      return <CheckCircle2 className="w-3.5 h-3.5 text-[#0B012C] fill-[#D9F99D] flex-shrink-0" />;
+      return <CheckCircle2 className="w-3.5 h-3.5 text-[#0F172A] fill-[#EEF2FF] flex-shrink-0" />;
     }
     switch (type) {
       case "VIDEO":
-        return <PlayCircle className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0B012C]" : "text-slate-400"}`} />;
+        return <PlayCircle className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0F172A]" : "text-slate-400"}`} />;
       case "READING":
-        return <BookOpen className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0B012C]" : "text-slate-400"}`} />;
+        return <BookOpen className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0F172A]" : "text-slate-400"}`} />;
       case "QUIZ":
       case "PRACTICE_QUIZ":
-        return <HelpCircle className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0B012C]" : "text-slate-400"}`} />;
+        return <HelpCircle className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0F172A]" : "text-slate-400"}`} />;
       case "DISCUSSION":
-        return <MessageSquare className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0B012C]" : "text-slate-400"}`} />;
+        return <MessageSquare className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? "text-[#0F172A]" : "text-slate-400"}`} />;
       default:
         return <PlayCircle className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />;
     }
   };
 
   return (
-    <div className="hidden md:flex flex-col w-72 flex-shrink-0 border-r border-[#E2D5F8]/40 bg-white h-[calc(100vh-56px)] fixed left-0 top-14 select-none z-30 shadow-sm">
+    <div className="hidden md:flex flex-col w-72 flex-shrink-0 border-r border-[#E2E8F0]/40 bg-white h-[calc(100vh-56px)] fixed left-0 top-14 select-none z-30 shadow-sm">
       
       {/* 1. Header Back Navigation */}
       <div className="px-5 pt-4 pb-2">
         <Link 
           href="/dashboard" 
-          className="text-[11px] font-black text-[#645A95] hover:text-[#0B012C] flex items-center gap-1.5 transition-colors !no-underline hover:!no-underline"
+          className="text-[11px] font-black text-[#64748B] hover:text-[#0F172A] flex items-center gap-1.5 transition-colors !no-underline hover:!no-underline"
         >
           <ArrowLeft className="w-3.5 h-3.5" /> Back to catalog
         </Link>
       </div>
 
       {/* 2. Sidebar Progress Header Panel */}
-      <div className="p-5 border-b border-[#E2D5F8]/30 bg-[#F5EFFF]/10 m-3 rounded-2xl border border-[#E2D5F8]/40">
-        <span className="text-[9px] font-black text-[#645A95] uppercase tracking-wider block mb-1">Course Progress</span>
+      <div className="p-5 border-b border-[#E2E8F0]/30 bg-[#F8FAFC]/10 m-3 rounded-2xl border border-[#E2E8F0]/40">
+        <span className="text-[9px] font-black text-[#64748B] uppercase tracking-wider block mb-1">Course Progress</span>
         <div className="space-y-2">
-          <div className="flex justify-between items-baseline text-xs font-extrabold text-[#0B012C]">
+          <div className="flex justify-between items-baseline text-xs font-extrabold text-[#0F172A]">
             <span>{progressPercentage}% Completed</span>
-            <span className="text-[10px] text-[#645A95] font-bold">{completedCount}/{totalCount} units</span>
+            <span className="text-[10px] text-[#64748B] font-bold">{completedCount}/{totalCount} units</span>
           </div>
-          <Progress value={progressPercentage} className="h-1.5 bg-slate-100 [&>div]:bg-[#D9F99D] transition-all duration-300 border border-slate-200/50 rounded-full" />
+          <Progress value={progressPercentage} className="h-1.5 bg-slate-100 [&>div]:bg-[#EEF2FF] transition-all duration-300 border border-slate-200/50 rounded-full" />
         </div>
       </div>
 
@@ -91,19 +91,19 @@ export function Sidebar({ courseId, modules }: { courseId: string; modules: Modu
             <AccordionItem 
               key={module.id} 
               value={module.id} 
-              className="border border-[#E2D5F8]/30 rounded-2xl overflow-hidden bg-[#FAFAFA]/40 hover:bg-[#FAFAFA] transition-all"
+              className="border border-[#E2E8F0]/30 rounded-2xl overflow-hidden bg-[#FAFAFA]/40 hover:bg-[#FAFAFA] transition-all"
             >
-              <AccordionTrigger className="px-4 py-3 hover:!no-underline [&[data-state=open]]:bg-[#F5EFFF]/15 transition-all flex items-center justify-between !no-underline">
+              <AccordionTrigger className="px-4 py-3 hover:!no-underline [&[data-state=open]]:bg-[#F8FAFC]/15 transition-all flex items-center justify-between !no-underline">
                 <div className="flex flex-col items-start text-left space-y-0.5 !no-underline">
-                  <span className="text-[8px] font-black tracking-wider text-[#645A95] uppercase !no-underline">
+                  <span className="text-[8px] font-black tracking-wider text-[#64748B] uppercase !no-underline">
                     Module {module.order} • {module.activities.length} Units
                   </span>
-                  <span className="font-extrabold text-xs text-[#0B012C] leading-snug line-clamp-1 !no-underline">
+                  <span className="font-extrabold text-xs text-[#0F172A] leading-snug line-clamp-1 !no-underline">
                     {module.title}
                   </span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pb-0 border-t border-[#E2D5F8]/20 bg-white">
+              <AccordionContent className="pb-0 border-t border-[#E2E8F0]/20 bg-white">
                 <div className="flex flex-col py-1">
                   {module.activities.map((activity) => {
                     const activityUrl = `/learn/${courseId}/${activity.id}`;
@@ -116,8 +116,8 @@ export function Sidebar({ courseId, modules }: { courseId: string; modules: Modu
                         href={activityUrl}
                         className={`flex items-start px-4 py-3.5 transition-all border-l-2 !no-underline hover:!no-underline ${
                           isActive
-                            ? "bg-[#F5EFFF]/30 border-[#0B012C] font-extrabold shadow-inner"
-                            : "border-transparent hover:bg-[#F5EFFF]/15"
+                            ? "bg-[#F8FAFC]/30 border-[#0F172A] font-extrabold shadow-inner"
+                            : "border-transparent hover:bg-[#F8FAFC]/15"
                         }`}
                       >
                         <div className="mt-0.5 mr-2.5 flex-shrink-0">
@@ -126,8 +126,8 @@ export function Sidebar({ courseId, modules }: { courseId: string; modules: Modu
                         <div className="flex-1 min-w-0 text-left !no-underline">
                           <span className={`text-[11px] leading-snug line-clamp-2 !no-underline block ${
                             isActive 
-                              ? "font-black text-[#0B012C] !no-underline" 
-                              : "font-semibold text-[#645A95] hover:text-[#0B012C] !no-underline"
+                              ? "font-black text-[#0F172A] !no-underline" 
+                              : "font-semibold text-[#64748B] hover:text-[#0F172A] !no-underline"
                           }`}>
                             {activity.title}
                           </span>
