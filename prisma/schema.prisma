@@ -1,0 +1,178 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Course {
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  thumbnail    String?
+  difficulty   String   @default("Beginner")
+  duration     String   @default("10 hours")
+  instructor   String   @default("Senior Staff Engineer")
+  organization String   @default("Internal Corp")
+  // Rating, review count and learner count are intentionally absent: they are
+  // derived from CourseReview and Enrollment rows, never stored as defaults.
+  skills       String   @default("") // Comma-separated list of skills, e.g., "Next.js, TypeScript"
+  outcomes     String   @default("") // Pipe-separated list of learning outcomes, e.g., "Master state;Learn caching"
+  faqs         String   @default("") // Structured FAQs, e.g., "Q: What is this?; A: This is Next.js. || Q: Next FAQ...?"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  modules      Module[]
+
+  enrollments Enrollment[]
+  courseReviews CourseReview[]
+}
+
+model Module {
+  id          String     @id @default(uuid())
+  title       String
+  description String?
+  order       Int
+  courseId    String
+  course      Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  activities  Activity[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+enum ActivityType {
+  VIDEO
+  READING
+  QUIZ
+  PRACTICE_QUIZ
+  DISCUSSION
+}
+
+model Activity {
+  id             String       @id @default(uuid())
+  title          String
+  type           ActivityType
+  description    String?
+  duration       String?      @default("10 mins")
+  order          Int
+  moduleId       String
+  module         Module       @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  content        String       @db.Text
+  // YouTube watch/embed/share URL for VIDEO activities. Null for every other type.
+  videoUrl       String?
+  resources      String       @default("") // Pipe-separated resource guides
+  completionRule String       @default("MANUAL") // MANUAL, WATCH_90, SCORE_80, ATTEMPT, VISIT
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  progress     ActivityProgress[]
+  quizAttempts QuizAttempt[]
+  notes        Note[]
+  posts        DiscussionPost[]
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String   // Encrypted hash
+  role      String   @default("STUDENT") // STUDENT, ADMIN
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  enrollments  Enrollment[]
+  progress     ActivityProgress[]
+  quizAttempts QuizAttempt[]
+  notes        Note[]
+  posts        DiscussionPost[]
+  reviews      CourseReview[]
+}
+
+model Enrollment {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId    String
+  course      Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  enrolledAt  DateTime  @default(now())
+  completedAt DateTime?
+
+  @@unique([userId, courseId])
+  @@index([courseId])
+}
+
+model ActivityProgress {
+  id             String    @id @default(uuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityId     String
+  activity       Activity  @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  completed      Boolean   @default(false)
+  // Drives the WATCH_90 completion rule for video activities.
+  watchedSeconds Int       @default(0)
+  completedAt    DateTime?
+  updatedAt      DateTime  @updatedAt
+
+  @@unique([userId, activityId])
+  @@index([activityId])
+}
+
+model QuizAttempt {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityId  String
+  activity    Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  // Percentage 0-100, graded on the server against the stored answer key.
+  score       Int
+  passed      Boolean
+  answers     String   @db.Text // JSON: submitted answers, for review
+  attemptedAt DateTime @default(now())
+
+  @@index([userId, activityId])
+}
+
+model Note {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityId String
+  activity   Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  body       String   @db.Text
+  updatedAt  DateTime @updatedAt
+
+  @@unique([userId, activityId])
+}
+
+model DiscussionPost {
+  id         String           @id @default(uuid())
+  userId     String
+  user       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityId String
+  activity   Activity         @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  body       String           @db.Text
+  parentId   String?
+  parent     DiscussionPost?  @relation("PostReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies    DiscussionPost[] @relation("PostReplies")
+  createdAt  DateTime         @default(now())
+
+  @@index([activityId, createdAt])
+}
+
+model CourseReview {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  rating    Int // 1-5
+  body      String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, courseId])
+  @@index([courseId])
+}

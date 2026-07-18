@@ -1,0 +1,97 @@
+"use client";
+
+import Link from "next/link";
+import { LogOut, LayoutDashboard } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { logoutAction } from "@/app/actions/authActions";
+
+interface NavbarProps {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+  } | null;
+}
+
+export function Navbar({ user }: NavbarProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    const res = await logoutAction();
+    if (res && res.success) {
+      router.push("/login");
+      router.refresh();
+    }
+  };
+
+  // Hidden on the landing page, both portals, and admin (which has its own sidebar).
+  if (
+    pathname === "/" ||
+    pathname === "/login" ||
+    pathname === "/adminlogin" ||
+    pathname?.startsWith("/admin")
+  ) {
+    return null;
+  }
+
+  const initial = user?.name ? user.name.slice(0, 1).toUpperCase() : "T";
+
+  return (
+    <nav className="sticky top-0 z-50 w-full border-b border-[#E2D5F8]/40 bg-white/80 backdrop-blur-md">
+      <div className="container flex h-14 items-center px-6 max-w-7xl mx-auto justify-between gap-6">
+        {/* Brand → the learner's home */}
+        <Link
+          href="/dashboard"
+          className="flex items-center space-x-2 transition-opacity hover:opacity-90 !no-underline hover:!no-underline"
+        >
+          <div className="bg-[#0B012C] text-[#E9D5FF] p-1.5 rounded-lg shadow-sm flex items-center justify-center font-bold text-xs">
+            🧊
+          </div>
+          <span className="font-extrabold text-base tracking-tight text-[#0B012C] !no-underline hover:!no-underline">
+            Iceberg
+          </span>
+        </Link>
+
+        <div className="flex items-center space-x-4 select-none">
+          <Link
+            href="/dashboard"
+            className="text-xs font-bold text-[#645A95] hover:text-[#0B012C] transition-colors !no-underline hover:!no-underline inline-flex items-center gap-1.5"
+          >
+            <LayoutDashboard className="w-3.5 h-3.5" /> Dashboard
+          </Link>
+
+          {user?.role === "ADMIN" && (
+            <Link
+              href="/admin"
+              className="text-xs font-bold text-[#645A95] hover:text-[#0B012C] transition-colors !no-underline hover:!no-underline"
+            >
+              Admin
+            </Link>
+          )}
+
+          {/* Profile Avatar Button */}
+          <Link
+            href="/profile"
+            title="View profile"
+            className="relative group !no-underline hover:!no-underline"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#E9D5FF] group-hover:bg-[#FEF08A] text-[#0B012C] flex items-center justify-center font-black text-[11px] transition-all border border-[#E2D5F8]/60">
+              {initial}
+            </div>
+            <span className="absolute bottom-0 right-0 w-2 h-2 bg-green-500 border border-white rounded-full" />
+          </Link>
+
+          <button
+            onClick={handleLogout}
+            title="Sign out"
+            className="text-slate-400 hover:text-red-600 p-1.5 rounded-md hover:bg-red-50 transition-all cursor-pointer"
+          >
+            <LogOut className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
