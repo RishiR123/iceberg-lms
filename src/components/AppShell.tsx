@@ -63,7 +63,8 @@ export function AppShell({ user, children }: { user: ShellUser; children: React.
   const handleLogout = async () => {
     const res = await logoutAction();
     if (res?.success) {
-      router.push("/login");
+      // Send admins back to their own portal — they're rejected at /login.
+      router.push(user?.role === "ADMIN" ? "/adminlogin" : "/login");
       router.refresh();
     }
   };

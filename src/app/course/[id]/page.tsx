@@ -62,7 +62,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
     }),
     getCourseSocialProof(course.id),
     prisma.courseReview.findMany({
-      where: { courseId: course.id, body: { not: null } },
+      where: { courseId: course.id },
       orderBy: { createdAt: "desc" },
       take: 6,
       include: { user: { select: { name: true } } },
@@ -201,7 +201,9 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
                         <Star key={i} className={`w-3 h-3 ${i < rev.rating ? "fill-current" : "text-slate-200"}`} />
                       ))}
                     </div>
-                    <p className="text-xs text-[#0F172A] italic leading-relaxed">&ldquo;{rev.body}&rdquo;</p>
+                    {rev.body && (
+                      <p className="text-xs text-[#0F172A] italic leading-relaxed">&ldquo;{rev.body}&rdquo;</p>
+                    )}
                     <p className="text-[10px] text-[#64748B] font-semibold mt-2">
                       {rev.user.name} ·{" "}
                       {rev.createdAt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
