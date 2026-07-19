@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { Sidebar } from "@/components/Sidebar";
 import { notFound, redirect } from "next/navigation";
 import { getLoggedInUser } from "@/lib/auth";
+import { CourseProgressProvider } from "@/components/CourseProgressProvider";
+import { getCompletedActivityIds } from "@/app/actions/learningActions";
 
 export default async function LearnLayout({
   children,
@@ -46,10 +48,14 @@ export default async function LearnLayout({
     notFound();
   }
 
+  const completedActivityIds = await getCompletedActivityIds();
+
   return (
-    <div className="flex flex-1 h-screen overflow-hidden relative">
-      <Sidebar courseId={course.id} courseTitle={course.title} modules={course.modules} />
-      <div className="flex-1 md:pl-72 overflow-y-auto bg-[#F8FAFC]">{children}</div>
-    </div>
+    <CourseProgressProvider initialCompleted={completedActivityIds}>
+      <div className="flex flex-1 h-screen overflow-hidden relative">
+        <Sidebar courseId={course.id} courseTitle={course.title} modules={course.modules} />
+        <div className="flex-1 md:pl-72 overflow-y-auto bg-[#F8FAFC]">{children}</div>
+      </div>
+    </CourseProgressProvider>
   );
 }

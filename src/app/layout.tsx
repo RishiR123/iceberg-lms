@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
-import { CourseProgressProvider } from "@/components/CourseProgressProvider";
 import { AppShell } from "@/components/AppShell";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { getLoggedInUser } from "@/lib/auth";
-import { getCompletedActivityIds } from "@/app/actions/learningActions";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +26,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await getLoggedInUser();
-  const completedActivityIds = user ? await getCompletedActivityIds() : [];
 
   // Create a clean serializable user object to prevent RSC serialization warnings
   const serializedUser = user ? {
@@ -44,11 +41,9 @@ export default async function RootLayout({
       className={`${inter.variable} ${outfit.variable} font-sans h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <CourseProgressProvider initialCompleted={completedActivityIds}>
-          <TooltipProvider>
-            <AppShell user={serializedUser}>{children}</AppShell>
-          </TooltipProvider>
-        </CourseProgressProvider>
+        <TooltipProvider>
+          <AppShell user={serializedUser}>{children}</AppShell>
+        </TooltipProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import { cache } from "react";
 import { prisma } from "./prisma";
 
 // A missing secret must fail loudly: falling back to a literal would let anyone
@@ -54,7 +55,10 @@ export async function verifyJWT(token: string): Promise<any | null> {
   }
 }
 
-export async function getLoggedInUser() {
+// Wrapped in React cache(): the layout and the page both call this, so without
+// deduping every request would hit the database 2-3 times just to resolve the
+// same user. cache() collapses those into a single query per request.
+export const getLoggedInUser = cache(async () => {
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get(SESSION_COOKIE)?.value;
@@ -71,7 +75,7 @@ export async function getLoggedInUser() {
   } catch {
     return null;
   }
-}
+});
 
 export async function requireAdmin() {
   const user = await getLoggedInUser();

@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { prisma } from "./prisma";
 
 export type CourseProgressSummary = {
@@ -18,32 +19,34 @@ export type CourseProgressSummary = {
  * ActivityProgress rather than stored, so it can't drift out of sync when an
  * admin adds or removes activities.
  */
-export async function getEnrolledCourseProgress(userId: string): Promise<CourseProgressSummary[]> {
-  const enrollments = await prisma.enrollment.findMany({
-    where: { userId },
-    orderBy: { enrolledAt: "desc" },
-    include: {
-      course: {
-        include: {
-          modules: {
-            orderBy: { order: "asc" },
-            include: { activities: { orderBy: { order: "asc" }, select: { id: true } } },
+export const getEnrolledCourseProgress = cache(
+  async (userId: string): Promise<CourseProgressSummary[]> => {
+  // The two reads are independent, so run them together rather than back to back
+  // — one fewer serial round-trip to the database.
+  const [enrollments, progressRows] = await Promise.all([
+    prisma.enrollment.findMany({
+      where: { userId },
+      orderBy: { enrolledAt: "desc" },
+      include: {
+        course: {
+          include: {
+            modules: {
+              orderBy: { order: "asc" },
+              include: { activities: { orderBy: { order: "asc" }, select: { id: true } } },
+            },
           },
         },
       },
-    },
-  });
+    }),
+    prisma.activityProgress.findMany({
+      where: { userId, completed: true },
+      select: { activityId: true },
+    }),
+  ]);
 
   if (enrollments.length === 0) return [];
 
-  const completedIds = new Set(
-    (
-      await prisma.activityProgress.findMany({
-        where: { userId, completed: true },
-        select: { activityId: true },
-      })
-    ).map((r) => r.activityId)
-  );
+  const completedIds = new Set(progressRows.map((r) => r.activityId));
 
   return enrollments.map((e) => {
     const activityIds = e.course.modules.flatMap((m) => m.activities.map((a) => a.id));
@@ -62,7 +65,7 @@ export async function getEnrolledCourseProgress(userId: string): Promise<CourseP
       nextActivityId: next,
     };
   });
-}
+});
 
 export type LearnerStats = {
   coursesCompleted: number;
@@ -71,7 +74,9 @@ export type LearnerStats = {
   quizzesPassed: number;
 };
 
-export async function getLearnerStats(userId: string): Promise<LearnerStats> {
+export const getLearnerStats = cache(async (userId: string): Promise<LearnerStats> => {
+  // getEnrolledCourseProgress is itself cached, so when the dashboard calls both
+  // getLearnerStats and getEnrolledCourseProgress it runs only once.
   const [courses, activitiesCompleted, quizzesPassed] = await Promise.all([
     getEnrolledCourseProgress(userId),
     prisma.activityProgress.count({ where: { userId, completed: true } }),
@@ -84,7 +89,7 @@ export async function getLearnerStats(userId: string): Promise<LearnerStats> {
     activitiesCompleted,
     quizzesPassed,
   };
-}
+});
 
 export type DayActivity = { label: string; count: number };
 
