@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ChunkErrorReloader } from "@/components/ChunkErrorReloader";
 import { getLoggedInUser } from "@/lib/auth";
 
 const inter = Inter({
@@ -41,6 +42,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${outfit.variable} font-sans h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <ChunkErrorReloader />
         <TooltipProvider>
           <AppShell user={serializedUser}>{children}</AppShell>
         </TooltipProvider>
