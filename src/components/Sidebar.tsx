@@ -29,7 +29,15 @@ interface Module {
   activities: Activity[];
 }
 
-export function Sidebar({ courseId, modules }: { courseId: string; modules: Module[] }) {
+export function Sidebar({
+  courseId,
+  courseTitle,
+  modules,
+}: {
+  courseId: string;
+  courseTitle?: string;
+  modules: Module[];
+}) {
   const pathname = usePathname();
   const { isCompleted } = useCourseProgress();
 
@@ -42,7 +50,7 @@ export function Sidebar({ courseId, modules }: { courseId: string; modules: Modu
   // Helper to resolve custom icons based on ActivityType
   const getActivityIcon = (type: string, completed: boolean, isActive: boolean) => {
     if (completed) {
-      return <CheckCircle2 className="w-3.5 h-3.5 text-[#0F172A] fill-[#EEF2FF] flex-shrink-0" />;
+      return <CheckCircle2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />;
     }
     switch (type) {
       case "VIDEO":
@@ -60,28 +68,28 @@ export function Sidebar({ courseId, modules }: { courseId: string; modules: Modu
   };
 
   return (
-    <div className="hidden md:flex flex-col w-72 flex-shrink-0 border-r border-[#E2E8F0]/40 bg-white h-[calc(100vh-56px)] fixed left-0 top-14 select-none z-30 shadow-sm">
-      
-      {/* 1. Header Back Navigation */}
-      <div className="px-5 pt-4 pb-2">
-        <Link 
-          href="/dashboard" 
-          className="text-[11px] font-black text-[#64748B] hover:text-[#0F172A] flex items-center gap-1.5 transition-colors !no-underline hover:!no-underline"
+    <div className="hidden md:flex flex-col w-72 flex-shrink-0 border-r border-[#E2E8F0] bg-white h-screen fixed left-0 top-0 select-none z-30">
+
+      {/* Header: back + course title */}
+      <div className="px-5 pt-4 pb-3 border-b border-[#E2E8F0]">
+        <Link
+          href={`/course/${courseId}`}
+          className="text-[11px] font-bold text-[#64748B] hover:text-[#0F172A] flex items-center gap-1.5 transition-colors !no-underline hover:!no-underline"
         >
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to catalog
+          <ArrowLeft className="w-3.5 h-3.5" /> Course home
         </Link>
+        {courseTitle && (
+          <h2 className="text-sm font-black text-[#0F172A] mt-2 leading-snug line-clamp-2">{courseTitle}</h2>
+        )}
       </div>
 
-      {/* 2. Sidebar Progress Header Panel */}
-      <div className="p-5 border-b border-[#E2E8F0]/30 bg-[#F8FAFC]/10 m-3 rounded-2xl border border-[#E2E8F0]/40">
-        <span className="text-[9px] font-black text-[#64748B] uppercase tracking-wider block mb-1">Course Progress</span>
-        <div className="space-y-2">
-          <div className="flex justify-between items-baseline text-xs font-extrabold text-[#0F172A]">
-            <span>{progressPercentage}% Completed</span>
-            <span className="text-[10px] text-[#64748B] font-bold">{completedCount}/{totalCount} units</span>
-          </div>
-          <Progress value={progressPercentage} className="h-1.5 bg-slate-100 [&>div]:bg-[#EEF2FF] transition-all duration-300 border border-slate-200/50 rounded-full" />
+      {/* Progress */}
+      <div className="px-5 py-4 border-b border-[#E2E8F0]">
+        <div className="flex justify-between items-baseline mb-1.5">
+          <span className="text-xs font-bold text-[#0F172A]">{progressPercentage}% complete</span>
+          <span className="text-[10px] text-[#64748B] font-bold">{completedCount}/{totalCount}</span>
         </div>
+        <Progress value={progressPercentage} className="h-1.5 bg-[#F1F5F9] [&>div]:bg-[#4F46E5] rounded-full" />
       </div>
 
       {/* 3. Curriculum Accordion Navigation */}

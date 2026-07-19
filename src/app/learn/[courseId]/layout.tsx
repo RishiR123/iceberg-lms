@@ -47,9 +47,9 @@ export default async function LearnLayout({
   }
 
   return (
-    <div className="flex flex-1 h-[calc(100vh-56px)] overflow-hidden relative">
-      <Sidebar courseId={course.id} modules={course.modules} />
-      <div className="flex-1 md:pl-72 overflow-y-auto bg-background">{children}</div>
+    <div className="flex flex-1 h-screen overflow-hidden relative">
+      <Sidebar courseId={course.id} courseTitle={course.title} modules={course.modules} />
+      <div className="flex-1 md:pl-72 overflow-y-auto bg-[#F8FAFC]">{children}</div>
     </div>
   );
 }

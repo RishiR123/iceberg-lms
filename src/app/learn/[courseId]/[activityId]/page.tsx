@@ -69,15 +69,21 @@ export default async function ActivityPage({
   const typeConfig = getActivityTypeLabel(activity.type);
 
   return (
-    <div className="flex-1 flex flex-col w-full max-w-5xl mx-auto px-6 md:px-8 py-10 bg-[#F8FAFC]/10 min-h-full font-sans selection:bg-[#EEF2FF] selection:text-[#0F172A]">
-      
-      {/* Upper Navigation / Metadata Header */}
-      <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-5 border-b border-[#E2E8F0]/40 pb-6">
-        <div className="space-y-1.5">
-          <span className="inline-flex items-center text-[10px] font-bold text-[#0F172A] uppercase tracking-wider bg-[#EEF2FF] px-2.5 py-1 rounded-full border border-[#E2E8F0]/40">
-            {typeConfig.icon} {typeConfig.label} • Activity {currentIndex + 1} of {flatActivities.length}
-          </span>
-          <h1 className="text-2xl md:text-3.5xl font-black tracking-tight text-[#0F172A]">
+    <div className="flex-1 flex flex-col w-full max-w-3xl mx-auto px-6 md:px-8 py-10 min-h-full font-sans selection:bg-[#EEF2FF] selection:text-[#0F172A]">
+
+      {/* Header: breadcrumb + title + completion toggle */}
+      <div className="mb-8 flex flex-col sm:flex-row sm:items-start justify-between gap-5 border-b border-[#E2E8F0] pb-6">
+        <div className="space-y-2 min-w-0">
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-[#64748B]">
+            <span className="inline-flex items-center gap-1 text-[#4F46E5]">
+              {typeConfig.icon} {typeConfig.label}
+            </span>
+            <span className="text-slate-300">·</span>
+            <span className="truncate">{activity.module.title}</span>
+            <span className="text-slate-300">·</span>
+            <span className="whitespace-nowrap">{currentIndex + 1} / {flatActivities.length}</span>
+          </div>
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-[#0F172A]">
             {activity.title}
           </h1>
           {activity.duration && (
@@ -86,10 +92,9 @@ export default async function ActivityPage({
             </span>
           )}
         </div>
-        
-        {/* Toggle Manual Completion only for non-quiz/non-practice elements */}
+
         {activity.type !== "QUIZ" && activity.type !== "PRACTICE_QUIZ" && (
-          <div className="flex items-center gap-2 select-none self-start sm:self-auto">
+          <div className="flex items-center gap-2 select-none self-start flex-shrink-0">
             <ActivityActions activityId={activity.id} />
           </div>
         )}
