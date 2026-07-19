@@ -8,7 +8,6 @@ import {
   BookOpen,
   BarChart3,
   ShieldCheck,
-  UserCircle,
   LogOut,
   PanelLeftClose,
   PanelLeft,
