@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 // Optimistic gate only: it checks for the presence of a session cookie, not its
 // validity. Real authorization lives in the pages (getLoggedInUser) and in the
 // server actions (requireAdmin), which are what actually touch data.
-const PROTECTED = ["/dashboard", "/profile", "/admin", "/learn", "/course"];
+const PROTECTED = ["/dashboard", "/courses", "/progress", "/profile", "/admin", "/learn", "/course"];
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -27,5 +27,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/profile/:path*", "/admin/:path*", "/learn/:path*", "/course/:path*"],
+  matcher: ["/dashboard/:path*", "/courses/:path*", "/progress/:path*", "/profile/:path*", "/admin/:path*", "/learn/:path*", "/course/:path*"],
 };

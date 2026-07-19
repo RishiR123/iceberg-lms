@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { CourseProgressProvider } from "@/components/CourseProgressProvider";
-import { Navbar } from "@/components/Navbar";
+import { AppShell } from "@/components/AppShell";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { getLoggedInUser } from "@/lib/auth";
 import { getCompletedActivityIds } from "@/app/actions/learningActions";
@@ -46,8 +46,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <CourseProgressProvider initialCompleted={completedActivityIds}>
           <TooltipProvider>
-            <Navbar user={serializedUser} />
-            <main className="flex-1 flex flex-col">{children}</main>
+            <AppShell user={serializedUser}>{children}</AppShell>
           </TooltipProvider>
         </CourseProgressProvider>
       </body>
